@@ -1,0 +1,97 @@
+[gd_scene format=3 uid="uid://bafhjl8jc48bd"]
+
+[ext_resource type="Script" uid="uid://bnkpfpk3o50k3" path="res://scenes/objects/ability_shrine.gd" id="1_qhvam"]
+[ext_resource type="Texture2D" uid="uid://vloybn0f3ras" path="res://assets/textures/glow.tres" id="2_231o8"]
+[ext_resource type="Texture2D" uid="uid://l2slavqhhyn1" path="res://assets/textures/circle.tres" id="3_vxrlr"]
+[ext_resource type="AudioStream" uid="uid://dlu45kq0nndar" path="res://assets/audio/sfx/ability_unlock.wav" id="4_pe5ua"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l5m0c"]
+size = Vector2(40, 64)
+
+[sub_resource type="Animation" id="Animation_jwbti"]
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visual/Orb:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -76), Vector2(0, -68), Vector2(0, -76)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visual/Orb/Ring:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.283185307179586]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_roeie"]
+_data = {
+&"float": SubResource("Animation_jwbti")
+}
+
+[node name="AbilityShrine" type="Area2D" unique_id=864064804 groups=["decor_blocker"]]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_qhvam")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1390573433]
+position = Vector2(0, -32)
+shape = SubResource("RectangleShape2D_l5m0c")
+
+[node name="Light" type="PointLight2D" parent="." unique_id=103988959]
+position = Vector2(0, -72)
+color = Color(0.75000006, 0.5555556, 1, 1)
+energy = 1.2
+texture = ExtResource("2_231o8")
+texture_scale = 2.0
+height = 90.0
+
+[node name="Visual" type="Node2D" parent="." unique_id=296598489]
+
+[node name="Pillar" type="Polygon2D" parent="Visual" unique_id=1269989218]
+color = Color(0.35, 0.38, 0.5, 1)
+polygon = PackedVector2Array(-12, -48, 12, -48, 12, 0, -12, 0)
+
+[node name="Cap" type="Polygon2D" parent="Visual" unique_id=682194778]
+color = Color(0.45, 0.48, 0.6, 1)
+polygon = PackedVector2Array(-16, -52, 16, -52, 16, -46, -16, -46)
+
+[node name="Orb" type="Node2D" parent="Visual" unique_id=1451647590]
+position = Vector2(0, -72)
+
+[node name="Halo" type="Sprite2D" parent="Visual/Orb" unique_id=304922040]
+modulate = Color(1.35, 1, 1.8, 0.3)
+scale = Vector2(0.1953125, 0.1953125)
+texture = ExtResource("2_231o8")
+
+[node name="Core" type="Sprite2D" parent="Visual/Orb" unique_id=994822007]
+modulate = Color(1.35, 1, 1.8, 1)
+scale = Vector2(0.28125, 0.28125)
+texture = ExtResource("3_vxrlr")
+
+[node name="Ring" type="Line2D" parent="Visual/Orb" unique_id=1320343994]
+points = PackedVector2Array(14, 0, 13.522962, 3.6234665, 12.124355, 7, 9.899495, 9.899495, 6.9999995, 12.124356, 3.623467, 13.522962, -6.119594e-07, 14, -3.6234665, 13.522962, -7.000001, 12.124355, -9.899495, 9.899495, -12.124355, 7.000001, -13.522962, 3.623468, -14, -1.2239188e-06)
+width = 2.0
+default_color = Color(1, 1, 1, 0.8)
+joint_mode = 2
+
+[node name="UnlockSound" type="AudioStreamPlayer2D" parent="." unique_id=153797096]
+stream = ExtResource("4_pe5ua")
+max_distance = 1200.0
+bus = &"SFX"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=5186447]
+libraries/ = SubResource("AnimationLibrary_roeie")
+autoplay = &"float"

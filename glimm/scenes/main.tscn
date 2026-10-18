@@ -1,0 +1,93 @@
+[gd_scene format=3 uid="uid://7siwde5k56or"]
+
+[ext_resource type="Script" uid="uid://b0kiu3snjckgn" path="res://scenes/main.gd" id="1_main"]
+[ext_resource type="PackedScene" uid="uid://cip3eioieckvo" path="res://scenes/player/player.tscn" id="3_player"]
+[ext_resource type="PackedScene" uid="uid://by62qrh3cadfn" path="res://scenes/ui/hud.tscn" id="4_hud"]
+[ext_resource type="PackedScene" uid="uid://ddtso4wgji6vu" path="res://scenes/ui/pause_menu.tscn" id="5_pause"]
+[ext_resource type="Environment" uid="uid://d36hsbii6bkuf" path="res://assets/environment.tres" id="6_env"]
+[ext_resource type="PackedScene" uid="uid://ixhwp7r1mbjd" path="res://scenes/fx/post_fx.tscn" id="7_post"]
+
+[node name="Main" type="Node" unique_id=1717695190]
+script = ExtResource("1_main")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1376413411]
+environment = ExtResource("6_env")
+
+[node name="Player" parent="." unique_id=1255960061 instance=ExtResource("3_player")]
+
+[node name="Foreground" type="CanvasLayer" parent="." unique_id=361160508]
+layer = 2
+follow_viewport_enabled = true
+
+[node name="Silhouettes" type="Parallax2D" parent="Foreground" unique_id=1098086108]
+scroll_scale = Vector2(1.4, 0)
+repeat_size = Vector2(1400, 0)
+repeat_times = 3
+
+[node name="Ground" type="Polygon2D" parent="Foreground/Silhouettes" unique_id=1416701179]
+color = Color(0.012, 0.014, 0.03, 0.92)
+polygon = PackedVector2Array(0, 540, 0, 529.98035, 32.49871, 525.0893, 51.325836, 512.5305, 72.84891, 507.70468, 93.07779, 528.33514, 132.38359, 531.58685, 151.6461, 532.8223, 185.9766, 510.20575, 214.09143, 515.52026, 237.8372, 512.33075, 266.74866, 507.96338, 300.6825, 515.20624, 323.64117, 518.83734, 363.0728, 515.5142, 390.8208, 520.15845, 417.27054, 527.26495, 454.00983, 517.38947, 485.59995, 512.2836, 522.2979, 510.94714, 543.84955, 525.30566, 577.9404, 531.1642, 605.6854, 509.69086, 639.45624, 513.3087, 661.0293, 517.8046, 687.7681, 520.33167, 707.73956, 528.1919, 727.5059, 512.9283, 754.283, 524.44415, 783.79144, 530.0471, 823.1006, 519.333, 845.11914, 520.119, 878.6251, 532.1009, 912.5498, 514.0857, 942.62103, 518.41486, 964.80756, 519.7675, 996.35254, 526.01154, 1018.70465, 517.8477, 1050.7196, 509.1994, 1075.0048, 532.76044, 1096.0115, 517.88043, 1124.7522, 517.8147, 1154.739, 516.1275, 1184.0837, 510.66046, 1202.497, 506.05923, 1240.9501, 510.0307, 1267.3774, 517.6621, 1289.9249, 515.00555, 1321.6879, 527.6771, 1347.0918, 523.7024, 1379.8798, 508.77823, 1400, 529.98035, 1400, 540)
+
+[node name="Roots" type="Node2D" parent="Foreground/Silhouettes" unique_id=791048687]
+
+[node name="Root1" type="Polygon2D" parent="Foreground/Silhouettes/Roots" unique_id=1884727281]
+color = Color(0.012, 0.014, 0.03, 0.92)
+polygon = PackedVector2Array(600.2552, 0, 616.4445, 0, 609.84985, 36.889988, 606.84985, 36.889988)
+
+[node name="Root2" type="Polygon2D" parent="Foreground/Silhouettes/Roots" unique_id=924908431]
+color = Color(0.012, 0.014, 0.03, 0.92)
+polygon = PackedVector2Array(416.88278, 0, 445.93088, 0, 432.90683, 34.95055, 429.90683, 34.95055)
+
+[node name="Root3" type="Polygon2D" parent="Foreground/Silhouettes/Roots" unique_id=986128016]
+color = Color(0.012, 0.014, 0.03, 0.92)
+polygon = PackedVector2Array(35.911636, 0, 62.222397, 0, 50.567017, 36.809475, 47.567017, 36.809475)
+
+[node name="Root4" type="Polygon2D" parent="Foreground/Silhouettes/Roots" unique_id=1898329474]
+color = Color(0.012, 0.014, 0.03, 0.92)
+polygon = PackedVector2Array(528.23364, 0, 556.36743, 0, 543.80054, 31.540886, 540.80054, 31.540886)
+
+[node name="Root5" type="Polygon2D" parent="Foreground/Silhouettes/Roots" unique_id=1753750622]
+color = Color(0.012, 0.014, 0.03, 0.92)
+polygon = PackedVector2Array(29.158281, 0, 44.848495, 0, 38.503387, 23.159138, 35.503387, 23.159138)
+
+[node name="Root6" type="Polygon2D" parent="Foreground/Silhouettes/Roots" unique_id=1188787919]
+color = Color(0.012, 0.014, 0.03, 0.92)
+polygon = PackedVector2Array(267.84222, 0, 297.27014, 0, 284.05618, 45.21045, 281.05618, 45.21045)
+
+[node name="Root7" type="Polygon2D" parent="Foreground/Silhouettes/Roots" unique_id=1008039754]
+color = Color(0.012, 0.014, 0.03, 0.92)
+polygon = PackedVector2Array(1132.9011, 0, 1155.7834, 0, 1145.8423, 29.135096, 1142.8423, 29.135096)
+
+[node name="Root8" type="Polygon2D" parent="Foreground/Silhouettes/Roots" unique_id=1889629424]
+color = Color(0.012, 0.014, 0.03, 0.92)
+polygon = PackedVector2Array(786.1155, 0, 808.40686, 0, 798.76117, 45.442604, 795.76117, 45.442604)
+
+[node name="Root9" type="Polygon2D" parent="Foreground/Silhouettes/Roots" unique_id=1703299565]
+color = Color(0.012, 0.014, 0.03, 0.92)
+polygon = PackedVector2Array(520.77203, 0, 552.1857, 0, 537.9789, 43.73528, 534.9789, 43.73528)
+
+[node name="Root10" type="Polygon2D" parent="Foreground/Silhouettes/Roots" unique_id=1828461115]
+color = Color(0.012, 0.014, 0.03, 0.92)
+polygon = PackedVector2Array(675.1231, 0, 691.9838, 0, 685.05347, 20.643362, 682.05347, 20.643362)
+
+[node name="Root11" type="Polygon2D" parent="Foreground/Silhouettes/Roots" unique_id=1907073595]
+color = Color(0.012, 0.014, 0.03, 0.92)
+polygon = PackedVector2Array(139.19838, 0, 169.76393, 0, 155.98116, 42.478493, 152.98116, 42.478493)
+
+[node name="Root12" type="Polygon2D" parent="Foreground/Silhouettes/Roots" unique_id=1813525234]
+color = Color(0.012, 0.014, 0.03, 0.92)
+polygon = PackedVector2Array(720.43536, 0, 736.85846, 0, 730.1469, 41.328926, 727.1469, 41.328926)
+
+[node name="Root13" type="Polygon2D" parent="Foreground/Silhouettes/Roots" unique_id=766417635]
+color = Color(0.012, 0.014, 0.03, 0.92)
+polygon = PackedVector2Array(392.86417, 0, 416.63272, 0, 406.24844, 22.495697, 403.24844, 22.495697)
+
+[node name="Root14" type="Polygon2D" parent="Foreground/Silhouettes/Roots" unique_id=2083300349]
+color = Color(0.012, 0.014, 0.03, 0.92)
+polygon = PackedVector2Array(217.98653, 0, 242.22456, 0, 231.60555, 28.406693, 228.60555, 28.406693)
+
+[node name="PostFx" parent="." unique_id=742816957 instance=ExtResource("7_post")]
+
+[node name="HUD" parent="." unique_id=1585554521 instance=ExtResource("4_hud")]
+
+[node name="PauseMenu" parent="." unique_id=190226524 instance=ExtResource("5_pause")]

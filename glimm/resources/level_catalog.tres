@@ -1,0 +1,44 @@
+[gd_resource type="Resource" script_class="LevelCatalog" format=3 uid="uid://bc0pvc7jeqp3l"]
+
+[ext_resource type="Script" uid="uid://be0xcf7r3xwdj" path="res://resources/level_catalog.gd" id="1"]
+[ext_resource type="Script" uid="uid://dcd7a7s661yf0" path="res://resources/level_entry.gd" id="1_xb8kb"]
+[ext_resource type="PackedScene" uid="uid://vc4oodaiu6a7" path="res://scenes/levels/level_01.tscn" id="2_y1gfd"]
+[ext_resource type="PackedScene" uid="uid://cvhe0adldfg1u" path="res://scenes/levels/level_02.tscn" id="3_8hyrf"]
+[ext_resource type="PackedScene" uid="uid://cuilvipyl73dd" path="res://scenes/levels/level_03.tscn" id="4_4kbhm"]
+[ext_resource type="PackedScene" uid="uid://csfhono40w7cd" path="res://scenes/levels/level_04.tscn" id="5_4kbhm"]
+[ext_resource type="PackedScene" uid="uid://ck8ry5yag6svk" path="res://scenes/levels/level_05.tscn" id="6_ulo38"]
+[ext_resource type="PackedScene" uid="uid://bxdyh6gpn8b58" path="res://scenes/levels/level_06.tscn" id="7_i6ckh"]
+
+[sub_resource type="Resource" id="Resource_ulo38"]
+script = ExtResource("1_xb8kb")
+title = "Wurzelhöhle"
+scene = ExtResource("2_y1gfd")
+
+[sub_resource type="Resource" id="Resource_i6ckh"]
+script = ExtResource("1_xb8kb")
+title = "Der Schacht"
+scene = ExtResource("3_8hyrf")
+
+[sub_resource type="Resource" id="Resource_ylomp"]
+script = ExtResource("1_xb8kb")
+title = "Schattenhain"
+scene = ExtResource("4_4kbhm")
+
+[sub_resource type="Resource" id="Resource_4kbhm"]
+script = ExtResource("1_xb8kb")
+title = "Irrlichtschlucht"
+scene = ExtResource("5_4kbhm")
+
+[sub_resource type="Resource" id="Resource_uji1y"]
+script = ExtResource("1_xb8kb")
+title = "Dunkle Tiefe"
+scene = ExtResource("6_ulo38")
+
+[sub_resource type="Resource" id="Resource_ufoxo"]
+script = ExtResource("1_xb8kb")
+title = "Herz der Schatten"
+scene = ExtResource("7_i6ckh")
+
+[resource]
+script = ExtResource("1")
+levels = Array[ExtResource("1_xb8kb")]([SubResource("Resource_ulo38"), SubResource("Resource_i6ckh"), SubResource("Resource_ylomp"), SubResource("Resource_4kbhm"), SubResource("Resource_uji1y"), SubResource("Resource_ufoxo")])

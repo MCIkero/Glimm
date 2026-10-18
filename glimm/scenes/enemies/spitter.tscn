@@ -1,0 +1,100 @@
+[gd_scene format=3 uid="uid://dakbi8nhe460r"]
+
+[ext_resource type="Script" uid="uid://ydkus00ptfuv" path="res://scenes/enemies/spitter.gd" id="1_q027y"]
+[ext_resource type="PackedScene" uid="uid://m2lr8n3j5iq6" path="res://scenes/enemies/shadow_bolt.tscn" id="2_5i83b"]
+[ext_resource type="Texture2D" uid="uid://vloybn0f3ras" path="res://assets/textures/glow.tres" id="3_cb8vx"]
+[ext_resource type="Texture2D" uid="uid://l2slavqhhyn1" path="res://assets/textures/circle.tres" id="4_u88rj"]
+[ext_resource type="AudioStream" uid="uid://tf7sayr2plbp" path="res://assets/audio/sfx/spitter_shoot.wav" id="5_80hpj"]
+[ext_resource type="AudioStream" uid="uid://vr1x8n6adu05" path="res://assets/audio/sfx/enemy_defeat.wav" id="6_iw4wr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xer1x"]
+size = Vector2(30, 32)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_crhnv"]
+resource_local_to_scene = true
+radius = 420.0
+
+[sub_resource type="Gradient" id="Gradient_arqt0"]
+colors = PackedColorArray(0.8, 0.5, 1, 1, 0.4, 0.2, 0.7, 0)
+
+[node name="Spitter" type="StaticBody2D" unique_id=967922453 groups=["decor_blocker"]]
+collision_layer = 17
+collision_mask = 0
+script = ExtResource("1_q027y")
+bolt_scene = ExtResource("2_5i83b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=120342850]
+position = Vector2(0, -16)
+shape = SubResource("RectangleShape2D_xer1x")
+
+[node name="Muzzle" type="Marker2D" parent="." unique_id=2089218378]
+position = Vector2(0, -22)
+
+[node name="Sight" type="RayCast2D" parent="." unique_id=308590925]
+position = Vector2(0, -22)
+enabled = false
+
+[node name="Detector" type="Area2D" parent="." unique_id=1428148065]
+position = Vector2(0, -22)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detector" unique_id=517133348]
+shape = SubResource("CircleShape2D_crhnv")
+
+[node name="Light" type="PointLight2D" parent="." unique_id=1253680075]
+position = Vector2(0, -22)
+color = Color(0.7, 0.4, 1, 1)
+energy = 0.8
+texture = ExtResource("3_cb8vx")
+height = 90.0
+
+[node name="Visual" type="Node2D" parent="." unique_id=1124736243]
+
+[node name="Body" type="Polygon2D" parent="Visual" unique_id=794734370]
+color = Color(0.3, 0.17, 0.46, 1)
+polygon = PackedVector2Array(-16, 0, -12, -26, 0, -34, 12, -26, 16, 0)
+
+[node name="Charge" type="Sprite2D" parent="Visual" unique_id=1238918880]
+modulate = Color(0.7, 0.35, 1, 0.5)
+position = Vector2(0, -22)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("4_u88rj")
+
+[node name="Eye" type="Sprite2D" parent="Visual" unique_id=1014382556]
+modulate = Color(2.2, 0.9, 1.9, 1)
+position = Vector2(0, -22)
+scale = Vector2(0.09375, 0.09375)
+texture = ExtResource("4_u88rj")
+
+[node name="Rubble" type="Polygon2D" parent="." unique_id=1081440498]
+visible = false
+color = Color(0.25, 0.2, 0.3, 1)
+polygon = PackedVector2Array(-14, -10, 14, -10, 14, 0, -14, 0)
+
+[node name="Burst" type="CPUParticles2D" parent="." unique_id=1031297310]
+position = Vector2(0, -16)
+emitting = false
+amount = 26
+lifetime = 0.7
+one_shot = true
+explosiveness = 1.0
+spread = 180.0
+gravity = Vector2(0, 220)
+initial_velocity_min = 80.0
+initial_velocity_max = 230.0
+scale_amount_min = 2.0
+scale_amount_max = 4.0
+color_ramp = SubResource("Gradient_arqt0")
+
+[node name="ShootSound" type="AudioStreamPlayer2D" parent="." unique_id=2038680516]
+stream = ExtResource("5_80hpj")
+volume_db = -3.0
+max_distance = 1200.0
+bus = &"SFX"
+
+[node name="DestroyedSound" type="AudioStreamPlayer2D" parent="." unique_id=1752955510]
+stream = ExtResource("6_iw4wr")
+max_distance = 1200.0
+bus = &"SFX"

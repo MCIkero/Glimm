@@ -1,0 +1,123 @@
+[gd_scene format=3 uid="uid://bey4rvv15mwpv"]
+
+[ext_resource type="Script" uid="uid://b25rvxq2b1s5k" path="res://scenes/enemies/crawler.gd" id="1_l8e30"]
+[ext_resource type="Texture2D" uid="uid://vloybn0f3ras" path="res://assets/textures/glow.tres" id="2_ntbkm"]
+[ext_resource type="Texture2D" uid="uid://l2slavqhhyn1" path="res://assets/textures/circle.tres" id="3_perxt"]
+[ext_resource type="AudioStream" uid="uid://vr1x8n6adu05" path="res://assets/audio/sfx/enemy_defeat.wav" id="4_qoiq7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kgobn"]
+size = Vector2(26, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ndks1"]
+size = Vector2(30, 22)
+
+[sub_resource type="Gradient" id="Gradient_qow5c"]
+colors = PackedColorArray(0.8, 0.5, 1, 1, 0.4, 0.2, 0.7, 0)
+
+[sub_resource type="Animation" id="Animation_f5omq"]
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visual:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -1.5), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a3pkw"]
+_data = {
+&"walk": SubResource("Animation_f5omq")
+}
+
+[node name="Crawler" type="CharacterBody2D" unique_id=1000959291]
+collision_layer = 16
+script = ExtResource("1_l8e30")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1403669700]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_kgobn")
+
+[node name="EdgeCheck" type="RayCast2D" parent="." unique_id=989816287]
+position = Vector2(-12, -4)
+target_position = Vector2(0, 16)
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=1998553584]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1861355022]
+position = Vector2(0, -11)
+shape = SubResource("RectangleShape2D_ndks1")
+
+[node name="Light" type="PointLight2D" parent="." unique_id=540325333]
+position = Vector2(0, -10)
+color = Color(0.75, 0.45, 1, 1)
+energy = 0.9
+texture = ExtResource("2_ntbkm")
+texture_scale = 0.8
+height = 90.0
+
+[node name="Visual" type="Node2D" parent="." unique_id=862314314]
+
+[node name="Glow" type="Sprite2D" parent="Visual" unique_id=1784566895]
+modulate = Color(0.55, 0.3, 0.9, 0.15)
+position = Vector2(0, -8)
+scale = Vector2(0.140625, 0.140625)
+texture = ExtResource("2_ntbkm")
+
+[node name="Body" type="Polygon2D" parent="Visual" unique_id=1657440100]
+color = Color(0.32, 0.18, 0.5, 1)
+polygon = PackedVector2Array(-14, -14, 14, -14, 14, 0, -14, 0)
+
+[node name="Spike1" type="Polygon2D" parent="Visual" unique_id=130648218]
+color = Color(0.8, 0.5, 1, 1)
+polygon = PackedVector2Array(-16, -14, -12, -22, -8, -14)
+
+[node name="Spike2" type="Polygon2D" parent="Visual" unique_id=515941209]
+color = Color(0.8, 0.5, 1, 1)
+polygon = PackedVector2Array(-8, -14, -4, -22, 0, -14)
+
+[node name="Spike3" type="Polygon2D" parent="Visual" unique_id=639563274]
+color = Color(0.8, 0.5, 1, 1)
+polygon = PackedVector2Array(0, -14, 4, -22, 8, -14)
+
+[node name="Spike4" type="Polygon2D" parent="Visual" unique_id=608340007]
+color = Color(0.8, 0.5, 1, 1)
+polygon = PackedVector2Array(8, -14, 12, -22, 16, -14)
+
+[node name="Eye" type="Sprite2D" parent="Visual" unique_id=273385089]
+modulate = Color(2.2, 0.9, 1.9, 1)
+position = Vector2(8, -9)
+scale = Vector2(0.08125, 0.08125)
+texture = ExtResource("3_perxt")
+
+[node name="Burst" type="CPUParticles2D" parent="." unique_id=1970212722]
+position = Vector2(0, -8)
+emitting = false
+amount = 26
+lifetime = 0.7
+one_shot = true
+explosiveness = 1.0
+spread = 180.0
+gravity = Vector2(0, 220)
+initial_velocity_min = 80.0
+initial_velocity_max = 230.0
+scale_amount_min = 2.0
+scale_amount_max = 4.0
+color_ramp = SubResource("Gradient_qow5c")
+
+[node name="DefeatSound" type="AudioStreamPlayer2D" parent="." unique_id=61737555]
+stream = ExtResource("4_qoiq7")
+max_distance = 1200.0
+bus = &"SFX"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=652830540]
+libraries/ = SubResource("AnimationLibrary_a3pkw")
+autoplay = &"walk"

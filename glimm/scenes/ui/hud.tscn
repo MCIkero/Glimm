@@ -1,0 +1,170 @@
+[gd_scene format=3 uid="uid://by62qrh3cadfn"]
+
+[ext_resource type="Script" uid="uid://d24mxxe3i7i51" path="res://scenes/ui/hud.gd" id="1_hud"]
+
+[sub_resource type="StyleBoxFlat" id="Style_bar_bg"]
+bg_color = Color(0.06, 0.08, 0.14, 0.85)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="Style_bar_fill"]
+bg_color = Color(0.6, 0.92, 1, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="Style_hint"]
+content_margin_left = 16.0
+content_margin_top = 10.0
+content_margin_right = 16.0
+content_margin_bottom = 10.0
+bg_color = Color(0.03, 0.04, 0.09, 0.8)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.5, 0.8, 1, 0.4)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="LabelSettings" id="Label_big"]
+font_size = 32
+outline_size = 8
+outline_color = Color(0, 0, 0, 0.8)
+
+[sub_resource type="StyleBoxFlat" id="Style_boss_fill"]
+bg_color = Color(0.72, 0.38, 1, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="HUD" type="CanvasLayer" unique_id=726459221]
+layer = 10
+script = ExtResource("1_hud")
+
+[node name="Fade" type="ColorRect" parent="." unique_id=919995131]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+
+[node name="LightPanel" type="VBoxContainer" parent="." unique_id=1811426538]
+offset_left = 20.0
+offset_top = 16.0
+offset_right = 380.0
+offset_bottom = 80.0
+mouse_filter = 2
+theme_override_constants/separation = 6
+
+[node name="LightLabel" type="Label" parent="LightPanel" unique_id=1936520429]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.75, 0.9, 1, 0.9)
+theme_override_font_sizes/font_size = 14
+text = "LICHT"
+
+[node name="LightBar" type="ProgressBar" parent="LightPanel" unique_id=385837156]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(240, 12)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/background = SubResource("Style_bar_bg")
+theme_override_styles/fill = SubResource("Style_bar_fill")
+value = 100.0
+show_percentage = false
+
+[node name="AbilitiesLabel" type="RichTextLabel" parent="LightPanel" unique_id=998215150]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 13
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="TimeLabel" type="Label" parent="." unique_id=1596639878]
+unique_name_in_owner = true
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -200.0
+offset_top = 16.0
+offset_right = -20.0
+offset_bottom = 40.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0.75, 0.9, 1, 0.8)
+text = "00:00.00"
+horizontal_alignment = 2
+
+[node name="HintPanel" type="PanelContainer" parent="." unique_id=825841642]
+unique_name_in_owner = true
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -300.0
+offset_top = 92.0
+offset_right = 300.0
+offset_bottom = 140.0
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Style_hint")
+
+[node name="HintLabel" type="Label" parent="HintPanel" unique_id=1745900127]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.88, 0.95, 1, 1)
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="MessageLabel" type="Label" parent="." unique_id=1026109207]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("Label_big")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BossPanel" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -220.0
+offset_top = -70.0
+offset_right = 220.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_constants/separation = 4
+
+[node name="BossName" type="Label" parent="BossPanel"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.7, 1, 1)
+theme_override_font_sizes/font_size = 15
+text = "Schattenherz"
+horizontal_alignment = 1
+
+[node name="BossBar" type="ProgressBar" parent="BossPanel"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+theme_override_styles/background = SubResource("Style_bar_bg")
+theme_override_styles/fill = SubResource("Style_boss_fill")
+max_value = 6.0
+value = 6.0
+show_percentage = false

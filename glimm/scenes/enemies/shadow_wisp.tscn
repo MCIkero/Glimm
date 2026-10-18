@@ -1,0 +1,99 @@
+[gd_scene format=3 uid="uid://cpn52rqyitai8"]
+
+[ext_resource type="Script" uid="uid://dpa6bn31tbxgm" path="res://scenes/enemies/shadow_wisp.gd" id="1_ihsws"]
+[ext_resource type="Texture2D" uid="uid://vloybn0f3ras" path="res://assets/textures/glow.tres" id="2_n1s2l"]
+[ext_resource type="Texture2D" uid="uid://l2slavqhhyn1" path="res://assets/textures/circle.tres" id="3_xgfg4"]
+[ext_resource type="Texture2D" uid="uid://drmrxtctetyex" path="res://assets/textures/ring.tres" id="4_6ky7t"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1fpx6"]
+radius = 12.0
+
+[sub_resource type="Animation" id="Animation_0nqgj"]
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visual/Spikes:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.283185307179586]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visual/Spikes:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1), Vector2(1, 1), Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nw83e"]
+_data = {
+&"hover": SubResource("Animation_0nqgj")
+}
+
+[node name="ShadowWisp" type="Area2D" unique_id=1999065151]
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("1_ihsws")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1683423181]
+shape = SubResource("CircleShape2D_1fpx6")
+
+[node name="Light" type="PointLight2D" parent="." unique_id=1958916275]
+color = Color(0.7, 0.4, 1, 1)
+energy = 0.8
+texture = ExtResource("2_n1s2l")
+texture_scale = 0.9
+height = 90.0
+
+[node name="Visual" type="Node2D" parent="." unique_id=387261244]
+
+[node name="Halo" type="Sprite2D" parent="Visual" unique_id=1476693192]
+modulate = Color(0.55, 0.3, 0.9, 0.2)
+scale = Vector2(0.1796875, 0.1796875)
+texture = ExtResource("2_n1s2l")
+
+[node name="Spikes" type="Node2D" parent="Visual" unique_id=1689093502]
+
+[node name="Body" type="Polygon2D" parent="Visual/Spikes" unique_id=616823527]
+color = Color(0.12, 0.06, 0.2, 1)
+polygon = PackedVector2Array(13, 0, 7.7942286, 4.5, 6.4999995, 11.258331, -3.934025e-07, 9, -6.500001, 11.25833, -7.7942286, 4.5000005, -13, -1.136496e-06, -7.7942286, -4.4999995, -6.499999, -11.258331, 1.0732393e-07, -9, 6.499999, -11.258331, 7.794228, -4.5000014)
+
+[node name="Outline" type="Line2D" parent="Visual/Spikes" unique_id=1340640818]
+points = PackedVector2Array(13, 0, 7.7942286, 4.5, 6.4999995, 11.258331, -3.934025e-07, 9, -6.500001, 11.25833, -7.7942286, 4.5000005, -13, -1.136496e-06, -7.7942286, -4.4999995, -6.499999, -11.258331, 1.0732393e-07, -9, 6.499999, -11.258331, 7.794228, -4.5000014)
+closed = true
+width = 1.5
+default_color = Color(0.55, 0.3, 0.9, 1)
+joint_mode = 2
+
+[node name="EyeLeft" type="Sprite2D" parent="Visual" unique_id=136219785]
+modulate = Color(2.2, 0.8, 1.8, 1)
+position = Vector2(-4, -1)
+scale = Vector2(0.071875, 0.071875)
+texture = ExtResource("3_xgfg4")
+
+[node name="EyeRight" type="Sprite2D" parent="Visual" unique_id=405207151]
+modulate = Color(2.2, 0.8, 1.8, 1)
+position = Vector2(4, -1)
+scale = Vector2(0.071875, 0.071875)
+texture = ExtResource("3_xgfg4")
+
+[node name="HighlightRing" type="Sprite2D" parent="Visual" unique_id=1561513246]
+visible = false
+modulate = Color(1, 0.95, 0.7, 0.9)
+scale = Vector2(0.875, 0.875)
+texture = ExtResource("4_6ky7t")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2141485739]
+libraries/ = SubResource("AnimationLibrary_nw83e")
+autoplay = &"hover"

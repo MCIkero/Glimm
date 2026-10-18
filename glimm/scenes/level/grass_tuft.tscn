@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://cad4cq0ntyxfh"]
+
+[ext_resource type="Material" uid="uid://7vq7pa7v1mul" path="res://assets/materials/grass_sway.tres" id="1_hb5mc"]
+[ext_resource type="Texture2D" uid="uid://bf5iv8h5usbd5" path="res://assets/textures/grass_1.png" id="2_r8xlo"]
+
+[node name="GrassTuft" type="Sprite2D" unique_id=1131672931]
+material = ExtResource("1_hb5mc")
+texture = ExtResource("2_r8xlo")
+offset = Vector2(0, -8)

@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://m2lr8n3j5iq6"]
+
+[ext_resource type="Script" uid="uid://i7knwmoqrqky" path="res://scenes/enemies/shadow_bolt.gd" id="1_fo3ex"]
+[ext_resource type="Texture2D" uid="uid://vloybn0f3ras" path="res://assets/textures/glow.tres" id="2_inxiy"]
+[ext_resource type="Texture2D" uid="uid://l2slavqhhyn1" path="res://assets/textures/circle.tres" id="3_ywkql"]
+[ext_resource type="Texture2D" uid="uid://drmrxtctetyex" path="res://assets/textures/ring.tres" id="4_yr31e"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yshr5"]
+radius = 8.0
+
+[sub_resource type="Animation" id="Animation_b3cqx"]
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visual/Halo:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.12, 0.12), Vector2(0.14, 0.14), Vector2(0.12, 0.12)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_leug7"]
+_data = {
+&"pulse": SubResource("Animation_b3cqx")
+}
+
+[node name="ShadowBolt" type="Area2D" unique_id=1276200605]
+collision_layer = 8
+collision_mask = 19
+script = ExtResource("1_fo3ex")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1284634052]
+shape = SubResource("CircleShape2D_yshr5")
+
+[node name="Light" type="PointLight2D" parent="." unique_id=740526506]
+color = Color(0.75, 0.45, 1, 1)
+texture = ExtResource("2_inxiy")
+texture_scale = 0.7
+height = 90.0
+
+[node name="Visual" type="Node2D" parent="." unique_id=1085345247]
+
+[node name="Halo" type="Sprite2D" parent="Visual" unique_id=2000779999]
+modulate = Color(1.3, 0.6, 2, 0.25)
+scale = Vector2(0.1171875, 0.1171875)
+texture = ExtResource("2_inxiy")
+
+[node name="Core" type="Sprite2D" parent="Visual" unique_id=379295296]
+modulate = Color(1.3, 0.6, 2, 1)
+scale = Vector2(0.21875, 0.21875)
+texture = ExtResource("3_ywkql")
+
+[node name="Shine" type="Sprite2D" parent="Visual" unique_id=447517428]
+modulate = Color(1, 1, 1, 0.8)
+position = Vector2(-2, -2)
+scale = Vector2(0.0984375, 0.0984375)
+texture = ExtResource("3_ywkql")
+
+[node name="HighlightRing" type="Sprite2D" parent="Visual" unique_id=1621111272]
+modulate = Color(1, 0.95, 0.7, 0.9)
+scale = Vector2(0.59375, 0.59375)
+texture = ExtResource("4_yr31e")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1064970974]
+libraries/ = SubResource("AnimationLibrary_leug7")
+autoplay = &"pulse"

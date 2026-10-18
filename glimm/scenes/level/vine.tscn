@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://tshtqwe1dp57"]
+
+[ext_resource type="Material" uid="uid://bh28bcv6najq1" path="res://assets/materials/vine_sway.tres" id="1_xapd7"]
+[ext_resource type="Texture2D" uid="uid://c68ci6d3t8wkm" path="res://assets/textures/vine.png" id="2_wyjeo"]
+
+[node name="Vine" type="Sprite2D" unique_id=87528960]
+material = ExtResource("1_xapd7")
+texture = ExtResource("2_wyjeo")
+offset = Vector2(0, 32)

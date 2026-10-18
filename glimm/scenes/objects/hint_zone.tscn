@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bcn6qdtl1agn2"]
+
+[ext_resource type="Script" uid="uid://c2re3r71nrwqy" path="res://scenes/objects/hint_zone.gd" id="1_1ey8q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yglil"]
+resource_local_to_scene = true
+size = Vector2(32, 96)
+
+[node name="HintZone" type="Area2D" unique_id=1611870209]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_1ey8q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=496459100]
+position = Vector2(0, -48)
+shape = SubResource("RectangleShape2D_yglil")
+debug_color = Color(0.4, 0.9, 1, 0.25)

@@ -1,0 +1,99 @@
+[gd_scene format=3 uid="uid://bfhae33qcqr4l"]
+
+[ext_resource type="Script" uid="uid://hfl0pw1yryuo" path="res://scenes/ui/main_menu.gd" id="1_menu"]
+[ext_resource type="PackedScene" uid="uid://pimsvwgq761h" path="res://scenes/level/background.tscn" id="2_bg"]
+[ext_resource type="AudioStream" uid="uid://c8o1b1pqpc42b" path="res://assets/audio/music/background_sound_2.ogg" id="2_m1kxf"]
+[ext_resource type="Environment" uid="uid://d36hsbii6bkuf" path="res://assets/environment.tres" id="3_env"]
+
+[sub_resource type="LabelSettings" id="Label_title"]
+font_size = 72
+font_color = Color(0.85, 1.08, 1.15, 1)
+outline_size = 12
+outline_color = Color(0.3, 0.8, 1.2, 0.5)
+shadow_size = 24
+shadow_color = Color(0.4, 0.85, 1, 0.25)
+
+[node name="MainMenu" type="Control" unique_id=2067275097]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_menu")
+music = ExtResource("2_m1kxf")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1105681873]
+environment = ExtResource("3_env")
+
+[node name="Background" parent="." unique_id=419948315 instance=ExtResource("2_bg")]
+
+[node name="Layout" type="VBoxContainer" parent="." unique_id=1249346775]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 40.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Title" type="Label" parent="Layout" unique_id=703073889]
+layout_mode = 2
+text = "GLIMM"
+label_settings = SubResource("Label_title")
+horizontal_alignment = 1
+
+[node name="Subtitle" type="Label" parent="Layout" unique_id=225236117]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 0.8, 0.95, 0.9)
+text = "Licht ist Leben"
+horizontal_alignment = 1
+
+[node name="Spacer" type="Control" parent="Layout" unique_id=329764243]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+
+[node name="Buttons" type="VBoxContainer" parent="Layout" unique_id=1150634689]
+custom_minimum_size = Vector2(480, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 8
+
+[node name="PlayButton" type="Button" parent="Layout/Buttons" unique_id=2025253362]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Spielen"
+
+[node name="LevelHeader" type="Label" parent="Layout/Buttons" unique_id=1001180925]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.55, 0.68, 0.82, 1)
+theme_override_font_sizes/font_size = 14
+text = "Level wählen"
+horizontal_alignment = 1
+
+[node name="LevelList" type="GridContainer" parent="Layout/Buttons" unique_id=146846649]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
+columns = 2
+
+[node name="QuitButton" type="Button" parent="Layout/Buttons" unique_id=554776123]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Beenden"
+
+[node name="Spacer2" type="Control" parent="Layout" unique_id=1463226644]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+
+[node name="ControlsLabel" type="Label" parent="Layout" unique_id=2053613257]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 0.72, 0.85, 1)
+theme_override_font_sizes/font_size = 14
+horizontal_alignment = 1
+autowrap_mode = 3

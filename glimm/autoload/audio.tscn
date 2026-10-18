@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://30yqfhe4xuux"]
+
+[ext_resource type="Script" uid="uid://cjgqktmhdw5os" path="res://autoload/audio.gd" id="1_rxn34"]
+[ext_resource type="AudioStream" uid="uid://b7shpwa6jmha2" path="res://assets/audio/sfx/ui_move.wav" id="2_uw2yb"]
+[ext_resource type="AudioStream" uid="uid://dw2dmi3xb7pr4" path="res://assets/audio/sfx/ui_confirm.wav" id="3_0rit4"]
+
+[node name="Audio" type="Node" unique_id=1759137749]
+process_mode = 3
+script = ExtResource("1_rxn34")
+
+[node name="MusicA" type="AudioStreamPlayer" parent="." unique_id=1110307858]
+bus = &"Music"
+
+[node name="MusicB" type="AudioStreamPlayer" parent="." unique_id=1060701965]
+bus = &"Music"
+
+[node name="UiMove" type="AudioStreamPlayer" parent="." unique_id=1112771315]
+stream = ExtResource("2_uw2yb")
+volume_db = -4.0
+bus = &"SFX"
+
+[node name="UiConfirm" type="AudioStreamPlayer" parent="." unique_id=595181489]
+stream = ExtResource("3_0rit4")
+volume_db = -2.0
+bus = &"SFX"

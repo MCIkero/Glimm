@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://yf3icshp5vbw"]
+
+[ext_resource type="Script" uid="uid://bng1t1ei2k4l6" path="res://scenes/objects/checkpoint.gd" id="1_dymgj"]
+[ext_resource type="Texture2D" uid="uid://vloybn0f3ras" path="res://assets/textures/glow.tres" id="2_erl1y"]
+[ext_resource type="AudioStream" uid="uid://drh2repct5585" path="res://assets/audio/sfx/checkpoint.wav" id="3_vyc7d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_16848"]
+size = Vector2(32, 48)
+
+[sub_resource type="Animation" id="Animation_wne2l"]
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visual/Flame/Shape:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1.15), Vector2(0.95, 0.95), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ttn1b"]
+_data = {
+&"flicker": SubResource("Animation_wne2l")
+}
+
+[node name="Checkpoint" type="Area2D" unique_id=773416412 groups=["decor_blocker"]]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_dymgj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1228552704]
+position = Vector2(0, -24)
+shape = SubResource("RectangleShape2D_16848")
+
+[node name="Light" type="PointLight2D" parent="." unique_id=217634214]
+position = Vector2(0, -24)
+color = Color(1, 0.78, 0.5, 1)
+energy = 0.45
+shadow_enabled = true
+shadow_filter = 1
+shadow_filter_smooth = 2.0
+texture = ExtResource("2_erl1y")
+texture_scale = 2.2
+height = 90.0
+
+[node name="Visual" type="Node2D" parent="." unique_id=361475961]
+
+[node name="Base" type="Polygon2D" parent="Visual" unique_id=2090444900]
+color = Color(0.45, 0.5, 0.6, 1)
+polygon = PackedVector2Array(-14, -10, 14, -10, 14, 0, -14, 0)
+
+[node name="Top" type="Polygon2D" parent="Visual" unique_id=915913355]
+color = Color(0.55, 0.6, 0.7, 1)
+polygon = PackedVector2Array(-10, -16, 10, -16, 10, -10, -10, -10)
+
+[node name="Flame" type="Node2D" parent="Visual" unique_id=329676711]
+position = Vector2(0, -16)
+
+[node name="Glow" type="Sprite2D" parent="Visual/Flame" unique_id=1348152117]
+modulate = Color(1, 1, 1, 0.22)
+position = Vector2(0, -8)
+scale = Vector2(0.15625, 0.15625)
+texture = ExtResource("2_erl1y")
+
+[node name="Shape" type="Polygon2D" parent="Visual/Flame" unique_id=72553798]
+polygon = PackedVector2Array(-7, 0, 0, -16, 7, 0)
+
+[node name="ActivateSound" type="AudioStreamPlayer2D" parent="." unique_id=1490689061]
+stream = ExtResource("3_vyc7d")
+max_distance = 1200.0
+bus = &"SFX"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=900489983]
+libraries/ = SubResource("AnimationLibrary_ttn1b")
+autoplay = &"flicker"

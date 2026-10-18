@@ -1,0 +1,89 @@
+[gd_scene format=3 uid="uid://inrdh1mnp6yp"]
+
+[ext_resource type="Script" uid="uid://mucbouyk6lpv" path="res://scenes/objects/light_gate.gd" id="1_k643l"]
+[ext_resource type="Texture2D" uid="uid://vloybn0f3ras" path="res://assets/textures/glow.tres" id="2_lsrng"]
+[ext_resource type="Shader" uid="uid://cq5d7qo8md5ja" path="res://assets/shaders/light_gate.gdshader" id="3_dkbtn"]
+[ext_resource type="AudioStream" uid="uid://cvis86w4mbbk" path="res://assets/audio/sfx/gate_open.wav" id="4_f3ujk"]
+[ext_resource type="AudioStream" uid="uid://ka1wd8b2s4rj" path="res://assets/audio/sfx/gate_denied.wav" id="5_mblmy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vqngx"]
+size = Vector2(24, 96)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vbay1"]
+size = Vector2(56, 96)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4xc4b"]
+shader = ExtResource("3_dkbtn")
+shader_parameter/field_color = null
+shader_parameter/line_color = null
+shader_parameter/line_count = null
+shader_parameter/scroll_speed = null
+
+[node name="LightGate" type="StaticBody2D" unique_id=348995802 groups=["decor_blocker"]]
+collision_mask = 0
+script = ExtResource("1_k643l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=38297218]
+position = Vector2(0, -48)
+shape = SubResource("RectangleShape2D_vqngx")
+
+[node name="Trigger" type="Area2D" parent="." unique_id=1219413989]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Trigger" unique_id=1095030534]
+position = Vector2(0, -48)
+shape = SubResource("RectangleShape2D_vbay1")
+
+[node name="Light" type="PointLight2D" parent="." unique_id=1879103522]
+position = Vector2(0, -48)
+color = Color(0.55, 0.85, 1, 1)
+energy = 0.7
+texture = ExtResource("2_lsrng")
+texture_scale = 1.4
+height = 90.0
+
+[node name="Visual" type="Node2D" parent="." unique_id=579854454]
+
+[node name="Frame" type="Polygon2D" parent="Visual" unique_id=853657672]
+color = Color(0.45, 0.5, 0.62, 1)
+polygon = PackedVector2Array(-16, -102, 16, -102, 16, -96, -16, -96)
+
+[node name="Barrier" type="Node2D" parent="Visual" unique_id=464708079]
+
+[node name="Field" type="ColorRect" parent="Visual/Barrier" unique_id=780600347]
+material = SubResource("ShaderMaterial_4xc4b")
+offset_left = -12.0
+offset_top = -96.0
+offset_right = 12.0
+mouse_filter = 2
+
+[node name="Border" type="Line2D" parent="Visual/Barrier" unique_id=499524077]
+points = PackedVector2Array(-12, -96, 12, -96, 12, 0, -12, 0)
+closed = true
+width = 2.0
+default_color = Color(0.55, 0.85, 1, 1)
+joint_mode = 2
+
+[node name="CostLabel" type="Label" parent="." unique_id=1646816508]
+offset_left = -24.0
+offset_top = -124.0
+offset_right = 24.0
+offset_bottom = -98.0
+theme_override_colors/font_color = Color(0.65, 0.92, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.8)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 14
+text = "40"
+horizontal_alignment = 1
+
+[node name="OpenSound" type="AudioStreamPlayer2D" parent="." unique_id=1206057116]
+stream = ExtResource("4_f3ujk")
+max_distance = 1200.0
+bus = &"SFX"
+
+[node name="DeniedSound" type="AudioStreamPlayer2D" parent="." unique_id=699598282]
+stream = ExtResource("5_mblmy")
+max_distance = 1200.0
+bus = &"SFX"

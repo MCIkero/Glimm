@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://ixhwp7r1mbjd"]
+
+[ext_resource type="Script" uid="uid://drrc1xwfc0nh2" path="res://scenes/fx/post_fx.gd" id="1_script"]
+[ext_resource type="Shader" uid="uid://dm72epn7fosog" path="res://assets/shaders/post_fx.gdshader" id="2_shader"]
+
+[sub_resource type="ShaderMaterial" id="Material_post"]
+shader = ExtResource("2_shader")
+shader_parameter/vignette_strength = 0.35
+shader_parameter/aberration = 0.0
+shader_parameter/tint = Vector3(1, 1, 1)
+
+[node name="PostFx" type="CanvasLayer" unique_id=958469557]
+layer = 9
+script = ExtResource("1_script")
+
+[node name="Screen" type="ColorRect" parent="." unique_id=324971971]
+material = SubResource("Material_post")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2

@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://bp3n0edymlch3"]
+
+[ext_resource type="Script" uid="uid://bhmuymjj8nqyf" path="res://scenes/objects/bash_orb.gd" id="1_ci086"]
+[ext_resource type="Texture2D" uid="uid://vloybn0f3ras" path="res://assets/textures/glow.tres" id="2_7foj5"]
+[ext_resource type="Texture2D" uid="uid://l2slavqhhyn1" path="res://assets/textures/circle.tres" id="3_60iuh"]
+[ext_resource type="Texture2D" uid="uid://drmrxtctetyex" path="res://assets/textures/ring.tres" id="4_m823s"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_og84w"]
+radius = 12.0
+
+[sub_resource type="Animation" id="Animation_pulny"]
+length = 1.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visual:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.08, 1.08), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visual/HighlightRing:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.8, 0.8), Vector2(0.9, 0.9), Vector2(0.8, 0.8), Vector2(0.9, 0.9), Vector2(0.8, 0.8)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k3dew"]
+_data = {
+&"pulse": SubResource("Animation_pulny")
+}
+
+[node name="BashOrb" type="Area2D" unique_id=873491152]
+collision_layer = 8
+collision_mask = 0
+monitoring = false
+script = ExtResource("1_ci086")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1450148302]
+shape = SubResource("CircleShape2D_og84w")
+
+[node name="Light" type="PointLight2D" parent="." unique_id=126908319]
+color = Color(1, 0.8, 0.45, 1)
+texture = ExtResource("2_7foj5")
+texture_scale = 1.1
+height = 90.0
+
+[node name="Visual" type="Node2D" parent="." unique_id=478516284]
+
+[node name="Halo" type="Sprite2D" parent="Visual" unique_id=1982333510]
+modulate = Color(1.9, 1.45, 0.6, 0.25)
+scale = Vector2(0.15625, 0.15625)
+texture = ExtResource("2_7foj5")
+
+[node name="Core" type="Sprite2D" parent="Visual" unique_id=1514985704]
+modulate = Color(1.9, 1.45, 0.6, 1)
+scale = Vector2(0.28125, 0.28125)
+texture = ExtResource("3_60iuh")
+
+[node name="Shine" type="Sprite2D" parent="Visual" unique_id=609956200]
+modulate = Color(1, 1, 1, 0.8)
+position = Vector2(-2, -2)
+scale = Vector2(0.1265625, 0.1265625)
+texture = ExtResource("3_60iuh")
+
+[node name="HighlightRing" type="Sprite2D" parent="Visual" unique_id=1824660841]
+visible = false
+modulate = Color(1, 0.95, 0.7, 0.9)
+scale = Vector2(0.8125, 0.8125)
+texture = ExtResource("4_m823s")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=171745319]
+libraries/ = SubResource("AnimationLibrary_k3dew")
+autoplay = &"pulse"

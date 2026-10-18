@@ -1,0 +1,718 @@
+[gd_scene format=4 uid="uid://bt1u2fpy3m5n8"]
+
+[ext_resource type="Script" uid="uid://cp3kwksdu837i" path="res://scenes/level/level.gd" id="1_qvykx"]
+[ext_resource type="PackedScene" uid="uid://pimsvwgq761h" path="res://scenes/level/background.tscn" id="2_bujjw"]
+[ext_resource type="AudioStream" uid="uid://bocy35mix3cqr" path="res://assets/audio/music/background_sound_1.ogg" id="2_quo62"]
+[ext_resource type="TileSet" uid="uid://cfaygcpk865yl" path="res://assets/tiles/tileset.tres" id="3_hq32h"]
+[ext_resource type="Script" uid="uid://ctbrsp1og6vqa" path="res://scenes/level/auto_terrain.gd" id="4_a381f"]
+[ext_resource type="Script" uid="uid://db7ig3j6bkwvd" path="res://scenes/level/terrain_shadows.gd" id="5_g1ai2"]
+[ext_resource type="PackedScene" uid="uid://yf3icshp5vbw" path="res://scenes/objects/checkpoint.tscn" id="6_fwulr"]
+[ext_resource type="PackedScene" uid="uid://eha7votaahc3" path="res://scenes/objects/goal.tscn" id="7_i403b"]
+[ext_resource type="Script" uid="uid://cjybvew65ady5" path="res://scenes/level/decor.gd" id="8_2l0hg"]
+[ext_resource type="PackedScene" uid="uid://dfa7328cllm7l" path="res://scenes/level/fireflies.tscn" id="9_7gsxw"]
+[ext_resource type="PackedScene" uid="uid://tshtqwe1dp57" path="res://scenes/level/vine.tscn" id="10_j5y0x"]
+[ext_resource type="PackedScene" uid="uid://cad4cq0ntyxfh" path="res://scenes/level/grass_tuft.tscn" id="13_yw11j"]
+[ext_resource type="PackedScene" uid="uid://dbtu8pitng020" path="res://scenes/level/glow_mushroom.tscn" id="16_rdr40"]
+[ext_resource type="Texture2D" uid="uid://cqs5plq0m4on2" path="res://assets/textures/grass_2.png" id="17_q5jtg"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ujhos"]
+polygon = PackedVector2Array(20, 20, 1900, 20, 1900, 32, 20, 32)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_rd3p3"]
+polygon = PackedVector2Array(20, 32, 32, 32, 32, 64, 20, 64)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_kfo6a"]
+polygon = PackedVector2Array(32, 32, 1888, 32, 1888, 44, 32, 44)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_p1hka"]
+polygon = PackedVector2Array(1888, 32, 1900, 32, 1900, 64, 1888, 64)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_8cdjg"]
+polygon = PackedVector2Array(20, 64, 12, 64, 12, 96, 20, 96)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_qbbld"]
+polygon = PackedVector2Array(1908, 64, 1900, 64, 1900, 96, 1908, 96)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_gsjb5"]
+polygon = PackedVector2Array(20, 96, 12, 96, 12, 128, 20, 128)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_y3mmh"]
+polygon = PackedVector2Array(1908, 96, 1900, 96, 1900, 128, 1908, 128)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_y4xkf"]
+polygon = PackedVector2Array(20, 128, 12, 128, 12, 160, 20, 160)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_pr0p8"]
+polygon = PackedVector2Array(1908, 128, 1900, 128, 1900, 160, 1908, 160)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_1pmpf"]
+polygon = PackedVector2Array(20, 160, 12, 160, 12, 192, 20, 192)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_wxy8d"]
+polygon = PackedVector2Array(1908, 160, 1900, 160, 1900, 192, 1908, 192)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_246hf"]
+polygon = PackedVector2Array(20, 192, 12, 192, 12, 224, 20, 224)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_0dubx"]
+polygon = PackedVector2Array(1908, 192, 1900, 192, 1900, 224, 1908, 224)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_1lwts"]
+polygon = PackedVector2Array(20, 224, 12, 224, 12, 256, 20, 256)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_fkk6k"]
+polygon = PackedVector2Array(1908, 224, 1900, 224, 1900, 256, 1908, 256)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_hufox"]
+polygon = PackedVector2Array(20, 256, 12, 256, 12, 288, 20, 288)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_kegwa"]
+polygon = PackedVector2Array(1908, 256, 1900, 256, 1900, 288, 1908, 288)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_w0vln"]
+polygon = PackedVector2Array(20, 288, 12, 288, 12, 320, 20, 320)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_va4tr"]
+polygon = PackedVector2Array(1908, 288, 1900, 288, 1900, 320, 1908, 320)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ktyoc"]
+polygon = PackedVector2Array(20, 320, 12, 320, 12, 352, 20, 352)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_asgnd"]
+polygon = PackedVector2Array(1908, 320, 1900, 320, 1900, 352, 1908, 352)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_shodu"]
+polygon = PackedVector2Array(20, 352, 12, 352, 12, 384, 20, 384)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_msa20"]
+polygon = PackedVector2Array(660, 372, 812, 372, 812, 364, 660, 364)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_nfq85"]
+polygon = PackedVector2Array(1908, 352, 1900, 352, 1900, 384, 1908, 384)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_vg7bb"]
+polygon = PackedVector2Array(20, 384, 12, 384, 12, 416, 20, 416)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_shnef"]
+polygon = PackedVector2Array(1908, 384, 1900, 384, 1900, 416, 1908, 416)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_qthb0"]
+polygon = PackedVector2Array(20, 416, 12, 416, 12, 448, 20, 448)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_tit30"]
+polygon = PackedVector2Array(1908, 416, 1900, 416, 1900, 448, 1908, 448)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_rh1qo"]
+polygon = PackedVector2Array(20, 448, 12, 448, 12, 480, 20, 480)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_5iy1j"]
+polygon = PackedVector2Array(1908, 448, 1900, 448, 1900, 480, 1908, 480)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_qivfw"]
+polygon = PackedVector2Array(20, 480, 32, 480, 32, 512, 20, 512)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_1u038"]
+polygon = PackedVector2Array(32, 500, 1888, 500, 1888, 512, 32, 512)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_6s4hb"]
+polygon = PackedVector2Array(1888, 480, 1900, 480, 1900, 512, 1888, 512)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_wgc2k"]
+polygon = PackedVector2Array(20, 512, 1900, 512, 1900, 544, 20, 544)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ghgyf"]
+polygon = PackedVector2Array(20, 544, 1900, 544, 1900, 556, 20, 556)
+
+[sub_resource type="Gradient" id="Gradient_fade"]
+offsets = PackedFloat32Array(0, 0.2, 0.8, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="Texture_fade"]
+gradient = SubResource("Gradient_fade")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0uu4c"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(960, 288, 0)
+direction = Vector3(0, -1, 0)
+spread = 180.0
+initial_velocity_min = 4.0
+initial_velocity_max = 14.0
+gravity = Vector3(0, 0, 0)
+scale_min = 1.5
+scale_max = 3.0
+color = Color(1.3, 1.7, 0.6, 1)
+color_ramp = SubResource("Texture_fade")
+turbulence_enabled = true
+turbulence_noise_strength = 2.0
+turbulence_noise_scale = 3.0
+turbulence_influence_min = 0.05
+turbulence_influence_max = 0.15
+
+[node name="LevelTemplate" type="Node2D" unique_id=494000157]
+script = ExtResource("1_qvykx")
+level_name = "Neues Level"
+start_hint = "Ein neues Level – im Editor gestalten!"
+granted_abilities = Array[StringName]([&"dash", &"bash"])
+music = ExtResource("2_quo62")
+
+[node name="Darkness" type="CanvasModulate" parent="." unique_id=196799956]
+color = Color(0.3, 0.32, 0.46, 1)
+
+[node name="Background" parent="." unique_id=1513233405 instance=ExtResource("2_bujjw")]
+
+[node name="Terrain" type="TileMapLayer" parent="." unique_id=539536631]
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA8AAAAAAAAAAAAAABAAAAAAAAAAAAAAABEAAAAAAAAAAAABAAAAAAAAAAAAAAABAAEAAAAAAAAAAAABAA8AAAAAAAAAAAABABAAAAAAAAAAAAABABEAAAAAAAAAAAACAAAAAAAAAAAAAAACAAEAAAAAAAAAAAACAA8AAAAAAAAAAAACABAAAAAAAAAAAAACABEAAAAAAAAAAAADAAAAAAAAAAAAAAADAAEAAAAAAAAAAAADAA8AAAAAAAAAAAADABAAAAAAAAAAAAADABEAAAAAAAAAAAAEAAAAAAAAAAAAAAAEAAEAAAAAAAAAAAAEAA8AAAAAAAAAAAAEABAAAAAAAAAAAAAEABEAAAAAAAAAAAAFAAAAAAAAAAAAAAAFAAEAAAAAAAAAAAAFAA8AAAAAAAAAAAAFABAAAAAAAAAAAAAFABEAAAAAAAAAAAAGAAAAAAAAAAAAAAAGAAEAAAAAAAAAAAAGAA8AAAAAAAAAAAAGABAAAAAAAAAAAAAGABEAAAAAAAAAAAAHAAAAAAAAAAAAAAAHAAEAAAAAAAAAAAAHAA8AAAAAAAAAAAAHABAAAAAAAAAAAAAHABEAAAAAAAAAAAAIAAAAAAAAAAAAAAAIAAEAAAAAAAAAAAAIAA8AAAAAAAAAAAAIABAAAAAAAAAAAAAIABEAAAAAAAAAAAAJAAAAAAAAAAAAAAAJAAEAAAAAAAAAAAAJAA8AAAAAAAAAAAAJABAAAAAAAAAAAAAJABEAAAAAAAAAAAAKAAAAAAAAAAAAAAAKAAEAAAAAAAAAAAAKAA8AAAAAAAAAAAAKABAAAAAAAAAAAAAKABEAAAAAAAAAAAALAAAAAAAAAAAAAAALAAEAAAAAAAAAAAALAA8AAAAAAAAAAAALABAAAAAAAAAAAAALABEAAAAAAAAAAAAMAAAAAAAAAAAAAAAMAAEAAAAAAAAAAAAMAA8AAAAAAAAAAAAMABAAAAAAAAAAAAAMABEAAAAAAAAAAAANAAAAAAAAAAAAAAANAAEAAAAAAAAAAAANAA8AAAAAAAAAAAANABAAAAAAAAAAAAANABEAAAAAAAAAAAAOAAAAAAAAAAAAAAAOAAEAAAAAAAAAAAAOAA8AAAAAAAAAAAAOABAAAAAAAAAAAAAOABEAAAAAAAAAAAAPAAAAAAAAAAAAAAAPAAEAAAAAAAAAAAAPAA8AAAAAAAAAAAAPABAAAAAAAAAAAAAPABEAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAEAAAAAAAAAAAAQAA8AAAAAAAAAAAAQABAAAAAAAAAAAAAQABEAAAAAAAAAAAARAAAAAAAAAAAAAAARAAEAAAAAAAAAAAARAA8AAAAAAAAAAAARABAAAAAAAAAAAAARABEAAAAAAAAAAAASAAAAAAAAAAAAAAASAAEAAAAAAAAAAAASAA8AAAAAAAAAAAASABAAAAAAAAAAAAASABEAAAAAAAAAAAATAAAAAAAAAAAAAAATAAEAAAAAAAAAAAATAA8AAAAAAAAAAAATABAAAAAAAAAAAAATABEAAAAAAAAAAAAUAAAAAAAAAAAAAAAUAAEAAAAAAAAAAAAUAA8AAAAAAAAAAAAUABAAAAAAAAAAAAAUABEAAAAAAAAAAAAVAAAAAAAAAAAAAAAVAAEAAAAAAAAAAAAVAA8AAAAAAAAAAAAVABAAAAAAAAAAAAAVABEAAAAAAAAAAAAWAAAAAAAAAAAAAAAWAAEAAAAAAAAAAAAWAA8AAAAAAAAAAAAWABAAAAAAAAAAAAAWABEAAAAAAAAAAAAXAAAAAAAAAAAAAAAXAAEAAAAAAAAAAAAXAA8AAAAAAAAAAAAXABAAAAAAAAAAAAAXABEAAAAAAAAAAAAYAAAAAAAAAAAAAAAYAAEAAAAAAAAAAAAYAA8AAAAAAAAAAAAYABAAAAAAAAAAAAAYABEAAAAAAAAAAAAZAAAAAAAAAAAAAAAZAAEAAAAAAAAAAAAZAA8AAAAAAAAAAAAZABAAAAAAAAAAAAAZABEAAAAAAAAAAAAaAAAAAAAAAAAAAAAaAAEAAAAAAAAAAAAaAA8AAAAAAAAAAAAaABAAAAAAAAAAAAAaABEAAAAAAAAAAAAbAAAAAAAAAAAAAAAbAAEAAAAAAAAAAAAbAA8AAAAAAAAAAAAbABAAAAAAAAAAAAAbABEAAAAAAAAAAAAcAAAAAAAAAAAAAAAcAAEAAAAAAAAAAAAcAA8AAAAAAAAAAAAcABAAAAAAAAAAAAAcABEAAAAAAAAAAAAdAAAAAAAAAAAAAAAdAAEAAAAAAAAAAAAdAA8AAAAAAAAAAAAdABAAAAAAAAAAAAAdABEAAAAAAAAAAAAeAAAAAAAAAAAAAAAeAAEAAAAAAAAAAAAeAA8AAAAAAAAAAAAeABAAAAAAAAAAAAAeABEAAAAAAAAAAAAfAAAAAAAAAAAAAAAfAAEAAAAAAAAAAAAfAA8AAAAAAAAAAAAfABAAAAAAAAAAAAAfABEAAAAAAAAAAAAgAAAAAAAAAAAAAAAgAAEAAAAAAAAAAAAgAA8AAAAAAAAAAAAgABAAAAAAAAAAAAAgABEAAAAAAAAAAAAhAAAAAAAAAAAAAAAhAAEAAAAAAAAAAAAhAA8AAAAAAAAAAAAhABAAAAAAAAAAAAAhABEAAAAAAAAAAAAiAAAAAAAAAAAAAAAiAAEAAAAAAAAAAAAiAA8AAAAAAAAAAAAiABAAAAAAAAAAAAAiABEAAAAAAAAAAAAjAAAAAAAAAAAAAAAjAAEAAAAAAAAAAAAjAA8AAAAAAAAAAAAjABAAAAAAAAAAAAAjABEAAAAAAAAAAAAkAAAAAAAAAAAAAAAkAAEAAAAAAAAAAAAkAA8AAAAAAAAAAAAkABAAAAAAAAAAAAAkABEAAAAAAAAAAAAlAAAAAAAAAAAAAAAlAAEAAAAAAAAAAAAlAA8AAAAAAAAAAAAlABAAAAAAAAAAAAAlABEAAAAAAAAAAAAmAAAAAAAAAAAAAAAmAAEAAAAAAAAAAAAmAA8AAAAAAAAAAAAmABAAAAAAAAAAAAAmABEAAAAAAAAAAAAnAAAAAAAAAAAAAAAnAAEAAAAAAAAAAAAnAA8AAAAAAAAAAAAnABAAAAAAAAAAAAAnABEAAAAAAAAAAAAoAAAAAAAAAAAAAAAoAAEAAAAAAAAAAAAoAA8AAAAAAAAAAAAoABAAAAAAAAAAAAAoABEAAAAAAAAAAAApAAAAAAAAAAAAAAApAAEAAAAAAAAAAAApAA8AAAAAAAAAAAApABAAAAAAAAAAAAApABEAAAAAAAAAAAAqAAAAAAAAAAAAAAAqAAEAAAAAAAAAAAAqAA8AAAAAAAAAAAAqABAAAAAAAAAAAAAqABEAAAAAAAAAAAArAAAAAAAAAAAAAAArAAEAAAAAAAAAAAArAA8AAAAAAAAAAAArABAAAAAAAAAAAAArABEAAAAAAAAAAAAsAAAAAAAAAAAAAAAsAAEAAAAAAAAAAAAsAA8AAAAAAAAAAAAsABAAAAAAAAAAAAAsABEAAAAAAAAAAAAtAAAAAAAAAAAAAAAtAAEAAAAAAAAAAAAtAA8AAAAAAAAAAAAtABAAAAAAAAAAAAAtABEAAAAAAAAAAAAuAAAAAAAAAAAAAAAuAAEAAAAAAAAAAAAuAA8AAAAAAAAAAAAuABAAAAAAAAAAAAAuABEAAAAAAAAAAAAvAAAAAAAAAAAAAAAvAAEAAAAAAAAAAAAvAA8AAAAAAAAAAAAvABAAAAAAAAAAAAAvABEAAAAAAAAAAAAwAAAAAAAAAAAAAAAwAAEAAAAAAAAAAAAwAA8AAAAAAAAAAAAwABAAAAAAAAAAAAAwABEAAAAAAAAAAAAxAAAAAAAAAAAAAAAxAAEAAAAAAAAAAAAxAA8AAAAAAAAAAAAxABAAAAAAAAAAAAAxABEAAAAAAAAAAAAyAAAAAAAAAAAAAAAyAAEAAAAAAAAAAAAyAA8AAAAAAAAAAAAyABAAAAAAAAAAAAAyABEAAAAAAAAAAAAzAAAAAAAAAAAAAAAzAAEAAAAAAAAAAAAzAA8AAAAAAAAAAAAzABAAAAAAAAAAAAAzABEAAAAAAAAAAAA0AAAAAAAAAAAAAAA0AAEAAAAAAAAAAAA0AA8AAAAAAAAAAAA0ABAAAAAAAAAAAAA0ABEAAAAAAAAAAAA1AAAAAAAAAAAAAAA1AAEAAAAAAAAAAAA1AA8AAAAAAAAAAAA1ABAAAAAAAAAAAAA1ABEAAAAAAAAAAAA2AAAAAAAAAAAAAAA2AAEAAAAAAAAAAAA2AA8AAAAAAAAAAAA2ABAAAAAAAAAAAAA2ABEAAAAAAAAAAAA3AAAAAAAAAAAAAAA3AAEAAAAAAAAAAAA3AA8AAAAAAAAAAAA3ABAAAAAAAAAAAAA3ABEAAAAAAAAAAAA4AAAAAAAAAAAAAAA4AAEAAAAAAAAAAAA4AA8AAAAAAAAAAAA4ABAAAAAAAAAAAAA4ABEAAAAAAAAAAAA5AAAAAAAAAAAAAAA5AAEAAAAAAAAAAAA5AA8AAAAAAAAAAAA5ABAAAAAAAAAAAAA5ABEAAAAAAAAAAAA6AAAAAAAAAAAAAAA6AAEAAAAAAAAAAAA6AA8AAAAAAAAAAAA6ABAAAAAAAAAAAAA6ABEAAAAAAAAAAAA7AAAAAAAAAAAAAAA7AAEAAAAAAAAAAAA7AAIAAAAAAAAAAAA7AAMAAAAAAAAAAAA7AAQAAAAAAAAAAAA7AAUAAAAAAAAAAAA7AAYAAAAAAAAAAAA7AAcAAAAAAAAAAAA7AAgAAAAAAAAAAAA7AAkAAAAAAAAAAAA7AAoAAAAAAAAAAAA7AAsAAAAAAAAAAAA7AAwAAAAAAAAAAAA7AA0AAAAAAAAAAAA7AA4AAAAAAAAAAAA7AA8AAAAAAAAAAAA7ABAAAAAAAAAAAAA7ABEAAAAAAAAAAAAUAAsAAAAAAAAAAAAVAAsAAAAAAAAAAAAWAAsAAAAAAAAAAAAXAAsAAAAAAAAAAAAYAAsAAAAAAAAAAAAZAAsAAAAAAAAAAAA=")
+tile_set = ExtResource("3_hq32h")
+script = ExtResource("4_a381f")
+
+[node name="TerrainShadows" type="Node2D" parent="." unique_id=797425914 node_paths=PackedStringArray("terrain")]
+script = ExtResource("5_g1ai2")
+terrain = NodePath("../Terrain")
+
+[node name="Strip0_0" type="LightOccluder2D" parent="TerrainShadows" unique_id=11302865]
+occluder = SubResource("OccluderPolygon2D_ujhos")
+
+[node name="Strip0_1" type="LightOccluder2D" parent="TerrainShadows" unique_id=1966959133]
+occluder = SubResource("OccluderPolygon2D_rd3p3")
+
+[node name="Strip1_1" type="LightOccluder2D" parent="TerrainShadows" unique_id=927552652]
+occluder = SubResource("OccluderPolygon2D_kfo6a")
+
+[node name="Strip59_1" type="LightOccluder2D" parent="TerrainShadows" unique_id=354097667]
+occluder = SubResource("OccluderPolygon2D_p1hka")
+
+[node name="Strip0_2" type="LightOccluder2D" parent="TerrainShadows" unique_id=48350029]
+occluder = SubResource("OccluderPolygon2D_8cdjg")
+
+[node name="Strip59_2" type="LightOccluder2D" parent="TerrainShadows" unique_id=1272362488]
+occluder = SubResource("OccluderPolygon2D_qbbld")
+
+[node name="Strip0_3" type="LightOccluder2D" parent="TerrainShadows" unique_id=22544321]
+occluder = SubResource("OccluderPolygon2D_gsjb5")
+
+[node name="Strip59_3" type="LightOccluder2D" parent="TerrainShadows" unique_id=1630277302]
+occluder = SubResource("OccluderPolygon2D_y3mmh")
+
+[node name="Strip0_4" type="LightOccluder2D" parent="TerrainShadows" unique_id=718680998]
+occluder = SubResource("OccluderPolygon2D_y4xkf")
+
+[node name="Strip59_4" type="LightOccluder2D" parent="TerrainShadows" unique_id=2087349715]
+occluder = SubResource("OccluderPolygon2D_pr0p8")
+
+[node name="Strip0_5" type="LightOccluder2D" parent="TerrainShadows" unique_id=688203112]
+occluder = SubResource("OccluderPolygon2D_1pmpf")
+
+[node name="Strip59_5" type="LightOccluder2D" parent="TerrainShadows" unique_id=1754116509]
+occluder = SubResource("OccluderPolygon2D_wxy8d")
+
+[node name="Strip0_6" type="LightOccluder2D" parent="TerrainShadows" unique_id=1758418704]
+occluder = SubResource("OccluderPolygon2D_246hf")
+
+[node name="Strip59_6" type="LightOccluder2D" parent="TerrainShadows" unique_id=2114768161]
+occluder = SubResource("OccluderPolygon2D_0dubx")
+
+[node name="Strip0_7" type="LightOccluder2D" parent="TerrainShadows" unique_id=2000823673]
+occluder = SubResource("OccluderPolygon2D_1lwts")
+
+[node name="Strip59_7" type="LightOccluder2D" parent="TerrainShadows" unique_id=1993218817]
+occluder = SubResource("OccluderPolygon2D_fkk6k")
+
+[node name="Strip0_8" type="LightOccluder2D" parent="TerrainShadows" unique_id=1357097238]
+occluder = SubResource("OccluderPolygon2D_hufox")
+
+[node name="Strip59_8" type="LightOccluder2D" parent="TerrainShadows" unique_id=1159394334]
+occluder = SubResource("OccluderPolygon2D_kegwa")
+
+[node name="Strip0_9" type="LightOccluder2D" parent="TerrainShadows" unique_id=821220950]
+occluder = SubResource("OccluderPolygon2D_w0vln")
+
+[node name="Strip59_9" type="LightOccluder2D" parent="TerrainShadows" unique_id=755917336]
+occluder = SubResource("OccluderPolygon2D_va4tr")
+
+[node name="Strip0_10" type="LightOccluder2D" parent="TerrainShadows" unique_id=1603859413]
+occluder = SubResource("OccluderPolygon2D_ktyoc")
+
+[node name="Strip59_10" type="LightOccluder2D" parent="TerrainShadows" unique_id=1855481466]
+occluder = SubResource("OccluderPolygon2D_asgnd")
+
+[node name="Strip0_11" type="LightOccluder2D" parent="TerrainShadows" unique_id=1326284971]
+occluder = SubResource("OccluderPolygon2D_shodu")
+
+[node name="Strip20_11" type="LightOccluder2D" parent="TerrainShadows" unique_id=247455368]
+occluder = SubResource("OccluderPolygon2D_msa20")
+
+[node name="Strip59_11" type="LightOccluder2D" parent="TerrainShadows" unique_id=262743967]
+occluder = SubResource("OccluderPolygon2D_nfq85")
+
+[node name="Strip0_12" type="LightOccluder2D" parent="TerrainShadows" unique_id=208394489]
+occluder = SubResource("OccluderPolygon2D_vg7bb")
+
+[node name="Strip59_12" type="LightOccluder2D" parent="TerrainShadows" unique_id=716455438]
+occluder = SubResource("OccluderPolygon2D_shnef")
+
+[node name="Strip0_13" type="LightOccluder2D" parent="TerrainShadows" unique_id=1762431601]
+occluder = SubResource("OccluderPolygon2D_qthb0")
+
+[node name="Strip59_13" type="LightOccluder2D" parent="TerrainShadows" unique_id=2075446348]
+occluder = SubResource("OccluderPolygon2D_tit30")
+
+[node name="Strip0_14" type="LightOccluder2D" parent="TerrainShadows" unique_id=173039392]
+occluder = SubResource("OccluderPolygon2D_rh1qo")
+
+[node name="Strip59_14" type="LightOccluder2D" parent="TerrainShadows" unique_id=581583686]
+occluder = SubResource("OccluderPolygon2D_5iy1j")
+
+[node name="Strip0_15" type="LightOccluder2D" parent="TerrainShadows" unique_id=341162028]
+occluder = SubResource("OccluderPolygon2D_qivfw")
+
+[node name="Strip1_15" type="LightOccluder2D" parent="TerrainShadows" unique_id=2001018484]
+occluder = SubResource("OccluderPolygon2D_1u038")
+
+[node name="Strip59_15" type="LightOccluder2D" parent="TerrainShadows" unique_id=386648397]
+occluder = SubResource("OccluderPolygon2D_6s4hb")
+
+[node name="Strip0_16" type="LightOccluder2D" parent="TerrainShadows" unique_id=2045221120]
+occluder = SubResource("OccluderPolygon2D_wgc2k")
+
+[node name="Strip0_17" type="LightOccluder2D" parent="TerrainShadows" unique_id=1511570737]
+occluder = SubResource("OccluderPolygon2D_ghgyf")
+
+[node name="Hazards" type="Node2D" parent="." unique_id=1951405615]
+
+[node name="Objects" type="Node2D" parent="." unique_id=111467667]
+
+[node name="Checkpoint" parent="Objects" unique_id=2145312618 instance=ExtResource("6_fwulr")]
+position = Vector2(208, 480)
+
+[node name="Goal" parent="Objects" unique_id=1396548101 instance=ExtResource("7_i403b")]
+position = Vector2(1744, 480)
+
+[node name="Decor" type="Node2D" parent="." unique_id=2008419101 node_paths=PackedStringArray("terrain")]
+script = ExtResource("8_2l0hg")
+terrain = NodePath("../Terrain")
+
+[node name="Vine" parent="Decor" unique_id=87528960 instance=ExtResource("10_j5y0x")]
+position = Vector2(57.24244, 64)
+scale = Vector2(1, 0.9956756)
+
+[node name="GrassTuft" parent="Decor" unique_id=1131672931 instance=ExtResource("13_yw11j")]
+position = Vector2(76.25961, 0)
+flip_h = true
+
+[node name="GlowMushroom" parent="Decor" unique_id=1327573540 instance=ExtResource("16_rdr40")]
+position = Vector2(74.81034, 0)
+
+[node name="GrassTuft2" parent="Decor" unique_id=1920164819 instance=ExtResource("13_yw11j")]
+position = Vector2(84.34589, 480)
+flip_h = true
+
+[node name="GrassTuft3" parent="Decor" unique_id=1234388009 instance=ExtResource("13_yw11j")]
+position = Vector2(116.58717, 480)
+
+[node name="GrassTuft4" parent="Decor" unique_id=669847443 instance=ExtResource("13_yw11j")]
+position = Vector2(134.739, 0)
+texture = ExtResource("17_q5jtg")
+
+[node name="Vine2" parent="Decor" unique_id=1954874077 instance=ExtResource("10_j5y0x")]
+position = Vector2(151.99602, 64)
+scale = Vector2(1, 0.7496918)
+
+[node name="GrassTuft5" parent="Decor" unique_id=1133052445 instance=ExtResource("13_yw11j")]
+position = Vector2(141.39229, 480)
+flip_h = true
+
+[node name="GrassTuft6" parent="Decor" unique_id=463935023 instance=ExtResource("13_yw11j")]
+position = Vector2(180.97763, 0)
+
+[node name="Vine3" parent="Decor" unique_id=1219489872 instance=ExtResource("10_j5y0x")]
+position = Vector2(167.28738, 64)
+scale = Vector2(1, 0.9986869)
+
+[node name="GrassTuft7" parent="Decor" unique_id=1994684977 instance=ExtResource("13_yw11j")]
+position = Vector2(200.78722, 0)
+texture = ExtResource("17_q5jtg")
+
+[node name="Vine4" parent="Decor" unique_id=1448507686 instance=ExtResource("10_j5y0x")]
+position = Vector2(201.18616, 64)
+scale = Vector2(1, 0.9250939)
+
+[node name="GrassTuft8" parent="Decor" unique_id=294479637 instance=ExtResource("13_yw11j")]
+position = Vector2(277.32516, 0)
+texture = ExtResource("17_q5jtg")
+
+[node name="GrassTuft9" parent="Decor" unique_id=93039334 instance=ExtResource("13_yw11j")]
+position = Vector2(263.78946, 480)
+texture = ExtResource("17_q5jtg")
+flip_h = true
+
+[node name="GrassTuft10" parent="Decor" unique_id=99246446 instance=ExtResource("13_yw11j")]
+position = Vector2(313.56277, 0)
+
+[node name="GrassTuft11" parent="Decor" unique_id=1195567400 instance=ExtResource("13_yw11j")]
+position = Vector2(343.10394, 480)
+flip_h = true
+
+[node name="GrassTuft12" parent="Decor" unique_id=804438602 instance=ExtResource("13_yw11j")]
+position = Vector2(368.95398, 480)
+
+[node name="Vine5" parent="Decor" unique_id=1007347582 instance=ExtResource("10_j5y0x")]
+position = Vector2(376.55057, 576)
+scale = Vector2(1, 0.5390699)
+
+[node name="Vine6" parent="Decor" unique_id=1109304464 instance=ExtResource("10_j5y0x")]
+position = Vector2(389.47708, 64)
+scale = Vector2(1, 0.62379897)
+
+[node name="GrassTuft13" parent="Decor" unique_id=809094552 instance=ExtResource("13_yw11j")]
+position = Vector2(401.03876, 480)
+flip_h = true
+
+[node name="GrassTuft14" parent="Decor" unique_id=1629528953 instance=ExtResource("13_yw11j")]
+position = Vector2(435.4435, 480)
+flip_h = true
+
+[node name="Vine7" parent="Decor" unique_id=583620582 instance=ExtResource("10_j5y0x")]
+position = Vector2(435.00626, 576)
+scale = Vector2(1, 0.31503153)
+
+[node name="Vine8" parent="Decor" unique_id=1631579911 instance=ExtResource("10_j5y0x")]
+position = Vector2(484.0175, 64)
+scale = Vector2(1, 0.7798542)
+
+[node name="GrassTuft15" parent="Decor" unique_id=2034336452 instance=ExtResource("13_yw11j")]
+position = Vector2(519.4596, 0)
+flip_h = true
+
+[node name="GrassTuft16" parent="Decor" unique_id=301989008 instance=ExtResource("13_yw11j")]
+position = Vector2(530.27625, 480)
+flip_h = true
+
+[node name="GlowMushroom2" parent="Decor" unique_id=712964578 instance=ExtResource("16_rdr40")]
+position = Vector2(557.5886, 0)
+
+[node name="Vine9" parent="Decor" unique_id=837377988 instance=ExtResource("10_j5y0x")]
+position = Vector2(589.93463, 64)
+scale = Vector2(1, 0.37515444)
+
+[node name="GrassTuft17" parent="Decor" unique_id=1243858891 instance=ExtResource("13_yw11j")]
+position = Vector2(590.5666, 480)
+flip_h = true
+
+[node name="Vine10" parent="Decor" unique_id=1719081130 instance=ExtResource("10_j5y0x")]
+position = Vector2(680.7059, 64)
+scale = Vector2(1, 0.87386733)
+
+[node name="GrassTuft18" parent="Decor" unique_id=903257333 instance=ExtResource("13_yw11j")]
+position = Vector2(723.8884, 480)
+texture = ExtResource("17_q5jtg")
+flip_h = true
+
+[node name="Vine11" parent="Decor" unique_id=895485026 instance=ExtResource("10_j5y0x")]
+position = Vector2(728.3888, 576)
+scale = Vector2(1, 0.53007823)
+
+[node name="GrassTuft19" parent="Decor" unique_id=312050359 instance=ExtResource("13_yw11j")]
+position = Vector2(751.3578, 0)
+texture = ExtResource("17_q5jtg")
+flip_h = true
+
+[node name="GrassTuft20" parent="Decor" unique_id=836276374 instance=ExtResource("13_yw11j")]
+position = Vector2(746.98236, 480)
+texture = ExtResource("17_q5jtg")
+flip_h = true
+
+[node name="GlowMushroom3" parent="Decor" unique_id=1780240396 instance=ExtResource("16_rdr40")]
+position = Vector2(778.30865, 480)
+
+[node name="Vine12" parent="Decor" unique_id=710491053 instance=ExtResource("10_j5y0x")]
+position = Vector2(777.37244, 576)
+scale = Vector2(1, 0.6551621)
+
+[node name="GrassTuft21" parent="Decor" unique_id=1917289081 instance=ExtResource("13_yw11j")]
+position = Vector2(804.95374, 0)
+
+[node name="Vine13" parent="Decor" unique_id=1372141254 instance=ExtResource("10_j5y0x")]
+position = Vector2(805.10034, 64)
+scale = Vector2(1, 0.8498969)
+
+[node name="GrassTuft22" parent="Decor" unique_id=1703451099 instance=ExtResource("13_yw11j")]
+position = Vector2(825.5328, 480)
+flip_h = true
+
+[node name="GrassTuft23" parent="Decor" unique_id=1287973351 instance=ExtResource("13_yw11j")]
+position = Vector2(838.4094, 0)
+
+[node name="GrassTuft24" parent="Decor" unique_id=401271280 instance=ExtResource("13_yw11j")]
+position = Vector2(841.4665, 480)
+texture = ExtResource("17_q5jtg")
+
+[node name="GrassTuft25" parent="Decor" unique_id=499924215 instance=ExtResource("13_yw11j")]
+position = Vector2(869.8467, 0)
+texture = ExtResource("17_q5jtg")
+
+[node name="GrassTuft26" parent="Decor" unique_id=1980805267 instance=ExtResource("13_yw11j")]
+position = Vector2(875.6863, 480)
+
+[node name="Vine14" parent="Decor" unique_id=1276812994 instance=ExtResource("10_j5y0x")]
+position = Vector2(903.62286, 64)
+scale = Vector2(1, 0.77260065)
+
+[node name="GrassTuft27" parent="Decor" unique_id=1130810245 instance=ExtResource("13_yw11j")]
+position = Vector2(909.4488, 480)
+flip_h = true
+
+[node name="Vine15" parent="Decor" unique_id=1890686416 instance=ExtResource("10_j5y0x")]
+position = Vector2(917.9809, 576)
+scale = Vector2(1, 0.8884294)
+
+[node name="Vine16" parent="Decor" unique_id=951440797 instance=ExtResource("10_j5y0x")]
+position = Vector2(943.7465, 64)
+scale = Vector2(1, 0.8752551)
+
+[node name="GrassTuft28" parent="Decor" unique_id=823978338 instance=ExtResource("13_yw11j")]
+position = Vector2(971.4159, 480)
+
+[node name="GrassTuft29" parent="Decor" unique_id=2049471876 instance=ExtResource("13_yw11j")]
+position = Vector2(998.0172, 0)
+texture = ExtResource("17_q5jtg")
+flip_h = true
+
+[node name="GrassTuft30" parent="Decor" unique_id=563763240 instance=ExtResource("13_yw11j")]
+position = Vector2(1000.9185, 480)
+flip_h = true
+
+[node name="GrassTuft31" parent="Decor" unique_id=980113328 instance=ExtResource("13_yw11j")]
+position = Vector2(1043.4501, 0)
+texture = ExtResource("17_q5jtg")
+flip_h = true
+
+[node name="Vine17" parent="Decor" unique_id=912385243 instance=ExtResource("10_j5y0x")]
+position = Vector2(1032.2454, 576)
+scale = Vector2(1, 0.91306734)
+
+[node name="GrassTuft32" parent="Decor" unique_id=1499946394 instance=ExtResource("13_yw11j")]
+position = Vector2(1067.0677, 0)
+texture = ExtResource("17_q5jtg")
+
+[node name="GrassTuft33" parent="Decor" unique_id=2045760973 instance=ExtResource("13_yw11j")]
+position = Vector2(1101.0679, 0)
+texture = ExtResource("17_q5jtg")
+flip_h = true
+
+[node name="GrassTuft34" parent="Decor" unique_id=843890335 instance=ExtResource("13_yw11j")]
+position = Vector2(1097.4462, 480)
+texture = ExtResource("17_q5jtg")
+
+[node name="Vine18" parent="Decor" unique_id=1633308166 instance=ExtResource("10_j5y0x")]
+position = Vector2(1098.0508, 576)
+scale = Vector2(1, 0.95342577)
+
+[node name="GrassTuft35" parent="Decor" unique_id=1402971539 instance=ExtResource("13_yw11j")]
+position = Vector2(1142.547, 480)
+texture = ExtResource("17_q5jtg")
+
+[node name="GrassTuft36" parent="Decor" unique_id=752608632 instance=ExtResource("13_yw11j")]
+position = Vector2(1157.6626, 480)
+texture = ExtResource("17_q5jtg")
+flip_h = true
+
+[node name="GrassTuft37" parent="Decor" unique_id=1404601448 instance=ExtResource("13_yw11j")]
+position = Vector2(1202.2888, 480)
+
+[node name="Vine19" parent="Decor" unique_id=16329591 instance=ExtResource("10_j5y0x")]
+position = Vector2(1208.116, 576)
+scale = Vector2(1, 0.9882251)
+
+[node name="GrassTuft38" parent="Decor" unique_id=1830196979 instance=ExtResource("13_yw11j")]
+position = Vector2(1235.2906, 0)
+
+[node name="GrassTuft39" parent="Decor" unique_id=1142195001 instance=ExtResource("13_yw11j")]
+position = Vector2(1242.2969, 480)
+
+[node name="Vine20" parent="Decor" unique_id=205255529 instance=ExtResource("10_j5y0x")]
+position = Vector2(1230.1791, 576)
+scale = Vector2(1, 0.5632129)
+
+[node name="GrassTuft40" parent="Decor" unique_id=796498904 instance=ExtResource("13_yw11j")]
+position = Vector2(1292.938, 0)
+
+[node name="Vine21" parent="Decor" unique_id=1450697964 instance=ExtResource("10_j5y0x")]
+position = Vector2(1304.3624, 64)
+scale = Vector2(1, 0.33797342)
+
+[node name="GrassTuft41" parent="Decor" unique_id=1079632134 instance=ExtResource("13_yw11j")]
+position = Vector2(1291.2494, 480)
+flip_h = true
+
+[node name="GrassTuft42" parent="Decor" unique_id=623420042 instance=ExtResource("13_yw11j")]
+position = Vector2(1316.6444, 0)
+
+[node name="Vine22" parent="Decor" unique_id=295086443 instance=ExtResource("10_j5y0x")]
+position = Vector2(1317.0061, 576)
+scale = Vector2(1, 0.69932276)
+
+[node name="GrassTuft43" parent="Decor" unique_id=1785896038 instance=ExtResource("13_yw11j")]
+position = Vector2(1352.9484, 0)
+texture = ExtResource("17_q5jtg")
+flip_h = true
+
+[node name="GlowMushroom4" parent="Decor" unique_id=632096138 instance=ExtResource("16_rdr40")]
+position = Vector2(1362.1179, 0)
+
+[node name="Vine23" parent="Decor" unique_id=72222947 instance=ExtResource("10_j5y0x")]
+position = Vector2(1349.264, 576)
+scale = Vector2(1, 0.37196195)
+
+[node name="GrassTuft44" parent="Decor" unique_id=854439793 instance=ExtResource("13_yw11j")]
+position = Vector2(1395.0251, 0)
+texture = ExtResource("17_q5jtg")
+
+[node name="Vine24" parent="Decor" unique_id=327901392 instance=ExtResource("10_j5y0x")]
+position = Vector2(1400.4049, 64)
+scale = Vector2(1, 0.77134675)
+
+[node name="GrassTuft45" parent="Decor" unique_id=1903269765 instance=ExtResource("13_yw11j")]
+position = Vector2(1391.9724, 480)
+texture = ExtResource("17_q5jtg")
+
+[node name="Vine25" parent="Decor" unique_id=470004769 instance=ExtResource("10_j5y0x")]
+position = Vector2(1396.149, 576)
+scale = Vector2(1, 0.8771018)
+
+[node name="GrassTuft46" parent="Decor" unique_id=565974143 instance=ExtResource("13_yw11j")]
+position = Vector2(1415.9093, 0)
+texture = ExtResource("17_q5jtg")
+
+[node name="Vine26" parent="Decor" unique_id=909328135 instance=ExtResource("10_j5y0x")]
+position = Vector2(1428.2074, 576)
+scale = Vector2(1, 0.6827017)
+
+[node name="Vine27" parent="Decor" unique_id=1197581914 instance=ExtResource("10_j5y0x")]
+position = Vector2(1449.7896, 64)
+scale = Vector2(1, 0.55769455)
+
+[node name="GrassTuft47" parent="Decor" unique_id=1230653590 instance=ExtResource("13_yw11j")]
+position = Vector2(1461.963, 480)
+texture = ExtResource("17_q5jtg")
+
+[node name="GrassTuft48" parent="Decor" unique_id=992566149 instance=ExtResource("13_yw11j")]
+position = Vector2(1484.4507, 0)
+texture = ExtResource("17_q5jtg")
+flip_h = true
+
+[node name="GrassTuft49" parent="Decor" unique_id=1338609384 instance=ExtResource("13_yw11j")]
+position = Vector2(1514.0784, 0)
+flip_h = true
+
+[node name="Vine28" parent="Decor" unique_id=196020312 instance=ExtResource("10_j5y0x")]
+position = Vector2(1525.6555, 64)
+scale = Vector2(1, 0.33773592)
+
+[node name="GrassTuft50" parent="Decor" unique_id=1849610422 instance=ExtResource("13_yw11j")]
+position = Vector2(1526.8258, 480)
+
+[node name="GrassTuft51" parent="Decor" unique_id=1791864084 instance=ExtResource("13_yw11j")]
+position = Vector2(1555.9413, 480)
+texture = ExtResource("17_q5jtg")
+flip_h = true
+
+[node name="GrassTuft52" parent="Decor" unique_id=983391072 instance=ExtResource("13_yw11j")]
+position = Vector2(1592.7799, 0)
+flip_h = true
+
+[node name="GrassTuft53" parent="Decor" unique_id=1075008034 instance=ExtResource("13_yw11j")]
+position = Vector2(1609.0715, 480)
+
+[node name="GrassTuft54" parent="Decor" unique_id=1116249441 instance=ExtResource("13_yw11j")]
+position = Vector2(1641.2052, 0)
+texture = ExtResource("17_q5jtg")
+flip_h = true
+
+[node name="GrassTuft55" parent="Decor" unique_id=993899937 instance=ExtResource("13_yw11j")]
+position = Vector2(1658.7454, 480)
+
+[node name="Vine29" parent="Decor" unique_id=73175790 instance=ExtResource("10_j5y0x")]
+position = Vector2(1656.8702, 576)
+scale = Vector2(1, 0.6860695)
+
+[node name="GrassTuft56" parent="Decor" unique_id=1992120872 instance=ExtResource("13_yw11j")]
+position = Vector2(1684.6163, 480)
+texture = ExtResource("17_q5jtg")
+flip_h = true
+
+[node name="GrassTuft57" parent="Decor" unique_id=1351331371 instance=ExtResource("13_yw11j")]
+position = Vector2(1702.0139, 0)
+texture = ExtResource("17_q5jtg")
+
+[node name="GrassTuft58" parent="Decor" unique_id=178809705 instance=ExtResource("13_yw11j")]
+position = Vector2(1734.5588, 0)
+texture = ExtResource("17_q5jtg")
+flip_h = true
+
+[node name="Vine30" parent="Decor" unique_id=763363936 instance=ExtResource("10_j5y0x")]
+position = Vector2(1733.805, 64)
+scale = Vector2(1, 0.69900227)
+
+[node name="Vine31" parent="Decor" unique_id=1329817424 instance=ExtResource("10_j5y0x")]
+position = Vector2(1747.4911, 576)
+scale = Vector2(1, 0.85398614)
+
+[node name="GrassTuft59" parent="Decor" unique_id=1029463255 instance=ExtResource("13_yw11j")]
+position = Vector2(1770.0465, 0)
+texture = ExtResource("17_q5jtg")
+
+[node name="GrassTuft60" parent="Decor" unique_id=1976814096 instance=ExtResource("13_yw11j")]
+position = Vector2(1800.1052, 0)
+flip_h = true
+
+[node name="GrassTuft61" parent="Decor" unique_id=883950098 instance=ExtResource("13_yw11j")]
+position = Vector2(1797.7208, 480)
+texture = ExtResource("17_q5jtg")
+
+[node name="Vine32" parent="Decor" unique_id=1263174264 instance=ExtResource("10_j5y0x")]
+position = Vector2(1881.2755, 64)
+scale = Vector2(1, 0.670339)
+
+[node name="GrassTuft62" parent="Decor" unique_id=1643346259 instance=ExtResource("13_yw11j")]
+position = Vector2(1866.5796, 480)
+flip_h = true
+
+[node name="GrassTuft63" parent="Decor" unique_id=965222064 instance=ExtResource("13_yw11j")]
+position = Vector2(1913.9426, 0)
+
+[node name="GrassTuft64" parent="Decor" unique_id=974676685 instance=ExtResource("13_yw11j")]
+position = Vector2(656.29517, 352)
+
+[node name="Vine33" parent="Decor" unique_id=1126182724 instance=ExtResource("10_j5y0x")]
+position = Vector2(667.6773, 384)
+scale = Vector2(1, 0.44139135)
+
+[node name="GrassTuft65" parent="Decor" unique_id=1932125583 instance=ExtResource("13_yw11j")]
+position = Vector2(697.06537, 352)
+
+[node name="GlowMushroom5" parent="Decor" unique_id=978963997 instance=ExtResource("16_rdr40")]
+position = Vector2(687.7723, 352)
+
+[node name="Vine34" parent="Decor" unique_id=61715434 instance=ExtResource("10_j5y0x")]
+position = Vector2(775.5987, 384)
+scale = Vector2(1, 0.58013666)
+
+[node name="Vine35" parent="Decor" unique_id=657686143 instance=ExtResource("10_j5y0x")]
+position = Vector2(805.8734, 384)
+scale = Vector2(1, 0.78721595)
+
+[node name="Enemies" type="Node2D" parent="." unique_id=1421157351]
+
+[node name="Hints" type="Node2D" parent="." unique_id=1454303395]
+
+[node name="PlayerSpawn" type="Marker2D" parent="." unique_id=834858390]
+position = Vector2(112, 464)
+
+[node name="Fireflies" parent="." unique_id=6659057 node_paths=PackedStringArray("terrain") instance=ExtResource("9_7gsxw")]
+position = Vector2(960, 288)
+amount = 49
+preprocess = 7.0
+visibility_rect = Rect2(-960, -288, 1920, 576)
+process_material = SubResource("ParticleProcessMaterial_0uu4c")
+terrain = NodePath("../Terrain")
