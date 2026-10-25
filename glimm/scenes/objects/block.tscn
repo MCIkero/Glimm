@@ -1,0 +1,32 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scenes/objects/block.gd" id="1_block"]
+[ext_resource type="Texture2D" uid="uid://dg3gyfknldvom" path="res://assets/tiles/rock.png" id="2_rock"]
+[ext_resource type="Texture2D" uid="uid://dpb6gi5ehn3ps" path="res://assets/tiles/rock_normal.png" id="3_rockn"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_block"]
+diffuse_texture = ExtResource("2_rock")
+normal_texture = ExtResource("3_rockn")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_block"]
+size = Vector2(32, 32)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_block"]
+polygon = PackedVector2Array(9, 9, 23, 9, 23, 23, 9, 23)
+
+[node name="Block" type="StaticBody2D"]
+collision_mask = 0
+script = ExtResource("1_block")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("CanvasTexture_block")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(16, 16)
+shape = SubResource("RectangleShape2D_block")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_block")

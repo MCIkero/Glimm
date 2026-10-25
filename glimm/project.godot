@@ -16,10 +16,6 @@ run/main_scene="res://scenes/ui/main_menu.tscn"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
-[audio]
-
-buses/default_bus_layout="uid://bhmk47l288u4s"
-
 [autoload]
 
 InputHints="*res://autoload/input_hints.gd"

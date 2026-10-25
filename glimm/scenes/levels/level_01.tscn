@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://dbtu8pitng020" path="res://scenes/level/glow_mushroom.tscn" id="17_uujh0"]
 [ext_resource type="Texture2D" uid="uid://cqs5plq0m4on2" path="res://assets/textures/grass_2.png" id="18_3t34l"]
 [ext_resource type="PackedScene" uid="uid://tshtqwe1dp57" path="res://scenes/level/vine.tscn" id="19_qy4h0"]
+[ext_resource type="PackedScene" path="res://scenes/objects/block.tscn" id="20_block"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_stkom"]
 polygon = PackedVector2Array(20, 20, 3564, 20, 3564, 32, 20, 32)
@@ -774,7 +775,68 @@ width_tiles = 3
 position = Vector2(1920, 704)
 width_tiles = 21
 
+[node name="Blocks" type="Node2D" parent="." unique_id=1427001001]
+
+[node name="Block" parent="Blocks" unique_id=1427001100 instance=ExtResource("20_block")]
+position = Vector2(160, 640)
+variant = 3
+look = 1
+
+[node name="Block2" parent="Blocks" unique_id=1427001101 instance=ExtResource("20_block")]
+position = Vector2(192, 608)
+variant = 1
+look = 1
+
+[node name="Block3" parent="Blocks" unique_id=1427001102 instance=ExtResource("20_block")]
+position = Vector2(192, 640)
+variant = 2
+
+[node name="Block4" parent="Blocks" unique_id=1427001103 instance=ExtResource("20_block")]
+position = Vector2(224, 576)
+variant = 3
+look = 1
+
+[node name="Block5" parent="Blocks" unique_id=1427001104 instance=ExtResource("20_block")]
+position = Vector2(224, 608)
+
+[node name="Block6" parent="Blocks" unique_id=1427001105 instance=ExtResource("20_block")]
+position = Vector2(224, 640)
+variant = 1
+
+[node name="Block7" parent="Blocks" unique_id=1427001106 instance=ExtResource("20_block")]
+position = Vector2(288, 512)
+variant = 3
+look = 1
+
+[node name="Block8" parent="Blocks" unique_id=1427001107 instance=ExtResource("20_block")]
+position = Vector2(320, 512)
+variant = 2
+look = 1
+
+[node name="Block9" parent="Blocks" unique_id=1427001108 instance=ExtResource("20_block")]
+position = Vector2(352, 512)
+variant = 1
+look = 1
+
+[node name="Block10" parent="Blocks" unique_id=1427001109 instance=ExtResource("20_block")]
+position = Vector2(384, 512)
+look = 1
+
+[node name="Block11" parent="Blocks" unique_id=1427001110 instance=ExtResource("20_block")]
+position = Vector2(416, 512)
+variant = 3
+look = 1
+
+[node name="Block12" parent="Blocks" unique_id=1427001111 instance=ExtResource("20_block")]
+position = Vector2(448, 512)
+variant = 2
+look = 1
+
 [node name="Objects" type="Node2D" parent="." unique_id=775981330]
+
+[node name="BlockShard" parent="Objects" unique_id=1427001200 instance=ExtResource("6_3g50r")]
+position = Vector2(432, 480)
+
 
 [node name="BashOrb" parent="Objects" unique_id=811005471 instance=ExtResource("5_e6lid")]
 position = Vector2(2192, 144)

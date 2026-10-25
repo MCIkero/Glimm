@@ -19,6 +19,15 @@
 
 Renderer: **Forward+** (Vulkan). Falls das Spiel auf einem sehr alten Rechner nicht startet: *Projekt → Projekteinstellungen → Rendering → Renderer* auf „Mobile“ stellen.
 
+### Als .exe exportieren (Windows)
+
+1. In Godot: *Editor → Exportvorlagen verwalten… → Herunterladen und installieren* (einmalig, passend zu 4.7).
+2. *Projekt → Exportieren…* → Vorlage **Windows Desktop** ist bereits angelegt (`export_presets.cfg`).
+3. **Projekt exportieren…** klicken, Haken bei *Mit Debug exportieren* entfernen, Speicherort wählen → fertig.
+
+Das Ergebnis ist eine einzelne `Glimm.exe` (Spieldaten eingebettet), die ohne Godot-Installation läuft. Eine Linux-Vorlage ist ebenfalls vorhanden.
+Per Kommandozeile: `godot --headless --path . --export-release "Windows Desktop" build/windows/Glimm.exe`
+
 ## Steuerung
 
 | Aktion | Tastatur | Controller |
@@ -82,6 +91,7 @@ Das Projekt ist komplett im Godot-Editor bearbeitbar – es gibt keine externen 
 
 ### Gestalten
 
+- **Alles aus Quadraten:** Jedes Level besteht vollständig aus einheitlichen 32×32-px-Felsquadraten. Jedes Quadrat wird einzeln gemalt (TileMap) oder als Block-Szene gesetzt.
 - **Fels malen:** Node `Terrain` auswählen → unten im *TileMap*-Panel unter **Terrains** das Terrain **„Fels“** wählen und malen (Godot-Autotiling: Moos oben, Wurzeln an der Decke). Auch normales Malen mit einer beliebigen Fels-Kachel funktioniert – das Script `AutoTerrain` korrigiert die Variante.
 - **Schatten** (`TerrainShadows`) aktualisieren sich beim Malen automatisch. Es sind normale `LightOccluder2D`-Nodes. Button im Inspector: *Schatten neu erzeugen*.
 - **Deko** (`Decor`): Gras, Ranken und Leuchtpilze sind normale Szenen-Instanzen und können frei verschoben, gelöscht oder aus `scenes/level/` von Hand ergänzt werden. Button im Inspector: *Deko verteilen* (ersetzt die vorhandene Deko).
@@ -97,6 +107,7 @@ Das Projekt ist komplett im Godot-Editor bearbeitbar – es gibt keine externen 
 | `crawler` (Krabbler) | **Start Direction**, Geschwindigkeit |
 | `spitter` (Speier) | Reichweite = Kreisform des Nodes `Detector`, **Fire Interval** |
 | `boss_arena` + `shadow_heart` | Leben, Phasengrenzen, Schussintervalle und Kugeltempo je Phase am **ShadowHeart**; Tor, Auslöser und Krabbler-Punkte (`SummonPoints`) als Nodes in der Arena |
+| `block` (Felsblock 32×32) | Einzelner Baustein mit Kollision und Schatten – frei platzieren, duplizieren (Strg+D), **Variant** (Steinmuster 0–3) und **Look** (Stein, Moos oben, Wurzeln unten). Beispiel: Treppe und Brücke am Anfang von Level 1 |
 | `checkpoint`, `goal`, `light_shard` | einfach platzieren (Ursprung auf dem Boden, außer Lichtsplitter) |
 
 - **Aussehen:** Alle Figuren und Objekte bestehen aus `Sprite2D`, `Polygon2D`, `Line2D` und `Label`, animiert mit `AnimationPlayer`. Farben, Formen und Animationen lassen sich direkt in den Szenen ändern.

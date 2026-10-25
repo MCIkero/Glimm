@@ -47,7 +47,7 @@ collision_mask = 2
 script = ExtResource("1_k34lj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1029028712]
-position = Vector2(1, -57.5)
+position = Vector2(2, -57.5)
 shape = SubResource("RectangleShape2D_vcypx")
 
 [node name="Light" type="PointLight2D" parent="." unique_id=808632562]
